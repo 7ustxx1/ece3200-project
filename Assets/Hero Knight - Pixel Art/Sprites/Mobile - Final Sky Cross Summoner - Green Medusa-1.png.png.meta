@@ -1,0 +1,542 @@
+fileFormatVersion: 2
+guid: ac7eb12cc8afde7478002110f63a3357
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4965348807462913207
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_0
+  - first:
+      213: -1065693155914732609
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_1
+  - first:
+      213: -7465864006748155998
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_2
+  - first:
+      213: 6981194098634864486
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_3
+  - first:
+      213: 3064425532282573799
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_4
+  - first:
+      213: 829142581143364812
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_5
+  - first:
+      213: 1494167356222430281
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_6
+  - first:
+      213: 330758044363418287
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_7
+  - first:
+      213: -8558357130544953752
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_8
+  - first:
+      213: 6185361342508092026
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_9
+  - first:
+      213: -6404629833580575258
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_10
+  - first:
+      213: -2841499212910207304
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_11
+  - first:
+      213: -4182670506361817768
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_12
+  - first:
+      213: 6933226676847084942
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_13
+  - first:
+      213: -1324192515512176708
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_14
+  - first:
+      213: 9127396479799637280
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_15
+  - first:
+      213: -3598064029681494937
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_16
+  - first:
+      213: -3785996051918821839
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_17
+  - first:
+      213: 2578517506024384090
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_18
+  - first:
+      213: 1433623200888659116
+    second: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 419
+        width: 155
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b73413199871bb0800000000000000
+      internalID: -4965348807462913207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_1
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 419
+        width: 166
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb232298b5e531f0800000000000000
+      internalID: -1065693155914732609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_2
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 419
+        width: 169
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2afc660ed3ce36890800000000000000
+      internalID: -7465864006748155998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_3
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 419
+        width: 160
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6673f257b0f22e060800000000000000
+      internalID: 6981194098634864486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_4
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 419
+        width: 160
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e3175c19c6078a20800000000000000
+      internalID: 3064425532282573799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_5
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 419
+        width: 175
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc46339d8c4b18b00800000000000000
+      internalID: 829142581143364812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_6
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 419
+        width: 114
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94c5f964b495cb410800000000000000
+      internalID: 1494167356222430281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_7
+      rect:
+        serializedVersion: 2
+        x: 1347
+        y: 419
+        width: 148
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faa62ec50b6179400800000000000000
+      internalID: 330758044363418287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_8
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 235
+        width: 115
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 866cfeca88b9a3980800000000000000
+      internalID: -8558357130544953752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_9
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 235
+        width: 114
+        height: 155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7ac0ab9e51d6d550800000000000000
+      internalID: 6185361342508092026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_10
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 235
+        width: 439
+        height: 153
+      alignment: 9
+      pivot: {x: 0.27, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e58f8b791f2e17a0800000000000000
+      internalID: -6404629833580575258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_11
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 235
+        width: 201
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8be5fe05587f098d0800000000000000
+      internalID: -2841499212910207304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_12
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 235
+        width: 167
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 855fccfc55b24f5c0800000000000000
+      internalID: -4182670506361817768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_13
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 18
+        width: 153
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e858bb4cde4c73060800000000000000
+      internalID: 6933226676847084942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_14
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 18
+        width: 333
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbf6aaa4ce58f9de0800000000000000
+      internalID: -1324192515512176708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_17
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 18
+        width: 346
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 136e85c56a0757bc0800000000000000
+      internalID: -3785996051918821839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_18
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 18
+        width: 327
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a56a5b9920cb8c320800000000000000
+      internalID: 2578517506024384090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Final Sky Cross Summoner - Green Medusa-1.png_19
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 18
+        width: 342
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cac1abe94b045e310800000000000000
+      internalID: 1433623200888659116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
