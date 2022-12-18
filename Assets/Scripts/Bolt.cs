@@ -24,19 +24,7 @@ public class Bolt : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "enemy")
-        {
-            // should be changed to the enemy's scripts name
-            GameObject go_other = other.GetComponent<GameObject>();
-            doDamage(go_other);
-        }
-
         Destroy(gameObject);
-    }
-
-    void doDamage(GameObject other)
-    {
-        //other.takeDamage(damage);
     }
 
 }
