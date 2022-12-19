@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemy
+  - small snake
   layers:
   - Default
   - TransparentFX
