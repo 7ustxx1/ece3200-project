@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Avatar
+    uniqueID: 983752797
+    locked: 0
+  - name: Medusa
+    uniqueID: 1469478207
+    locked: 0
+  - name: Background
+    uniqueID: 3820561765
+    locked: 0
