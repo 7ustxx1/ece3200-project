@@ -231,9 +231,14 @@ public class HeroKnight : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D bol)
     {
-        if (bol.gameObject.tag == "small snake")
+        if (bol.gameObject.tag == "small snake" && !isBlocking)
         {
             health -= 1;
+            m_animator.SetTrigger("Hurt");
+        }
+        if (bol.gameObject.tag == "Tail")
+        {
+            health -= 10;
             m_animator.SetTrigger("Hurt");
         }
     }

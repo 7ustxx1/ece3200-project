@@ -6,6 +6,12 @@ TagManager:
   tags:
   - enemy
   - small snake
+  - Bolt
+  - HealthSprite
+  - ManaSprite
+  - Tail
+  - Head
+  - Body
   layers:
   - Default
   - TransparentFX
