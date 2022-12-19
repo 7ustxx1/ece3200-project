@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HPManager : MonoBehaviour
 {
+    public ProgressBar playerBar;
     public GameObject heart;
     public GameObject halfHeart;
     public GameObject emptyHeart;
@@ -13,13 +14,13 @@ public class HPManager : MonoBehaviour
     void Start()
     {
         HP = PlayerPrefs.GetFloat("playerHP");
-        int heartNumber = (int)HP / 50;
+        playerBar.BarValue = HP;
     }
 
     // Update is called once per frame
     void Update()
     {
         HP = PlayerPrefs.GetFloat("playerHP");
-
+        playerBar.BarValue = HP;
     }
 }
