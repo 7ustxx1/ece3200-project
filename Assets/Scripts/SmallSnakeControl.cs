@@ -17,6 +17,7 @@ public class SmallSnakeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (moveLeftFlag)
         {
             moveLeft();
@@ -46,9 +47,11 @@ public class SmallSnakeControl : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("change");
+        if (collision.gameObject.tag != "Ground")
+        {
+            moveLeftFlag = !moveLeftFlag;
+        }
 
-        moveLeftFlag = !moveLeftFlag;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

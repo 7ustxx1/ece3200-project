@@ -12,6 +12,7 @@ TagManager:
   - Tail
   - Head
   - Body
+  - Ground
   layers:
   - Default
   - TransparentFX
