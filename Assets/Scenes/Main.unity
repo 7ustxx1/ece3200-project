@@ -781,7 +781,6 @@ Transform:
   m_LocalScale: {x: 6.498476, y: 6.498476, z: 6.498476}
   m_Children:
   - {fileID: 192852306}
-  - {fileID: 1202574370}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6857,6 +6856,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI ProgressBarCircle
       objectReference: {fileID: 0}
+    - target: {fileID: 114501253246479570, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
+        type: 3}
+      propertyPath: Title
+      value: Progress
+      objectReference: {fileID: 0}
     - target: {fileID: 224923131576229994, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7648,67 +7652,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1202574369
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1202574370}
-  - component: {fileID: 1202574371}
-  m_Layer: 0
-  m_Name: Lazer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1202574370
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202574369}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.03, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 381875149}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1202574371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202574369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed9080115ae493f49b2ed10a9edb40e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_data: {fileID: 11400000, guid: eb809c5fa687b8f478f78f25bb225637, type: 2}
-  m_overrideExternalProperties: 1
-  m_inspectorProperties:
-    m_layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    m_physicsType: 0
-    m_rayWidth: 0.1
-    m_angularRange: 360
-    m_raysNumber: 8
-    m_minRadialDistance: 1
-    m_maxRadialDistance: 25
-    m_rotate: 1
-    m_rotateClockwise: 1
-    m_rotationSpeed: 20
-    m_intermittent: 0
-    m_intervalTime: 2
-    m_initialTimingPhase: 0
 --- !u!1 &1222000196
 GameObject:
   m_ObjectHideFlags: 0
@@ -9692,7 +9635,7 @@ PrefabInstance:
     - target: {fileID: 8308537671409592231, guid: ee4fb13eb4f4c834cb0d77c28231fe5d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.01
+      value: 6.96
       objectReference: {fileID: 0}
     - target: {fileID: 8308537671409592231, guid: ee4fb13eb4f4c834cb0d77c28231fe5d,
         type: 3}

@@ -16,7 +16,7 @@ public class ProgressBar : MonoBehaviour
     public int TitleFontSize = 10;
 
     [Header("Bar Setting")]
-    public Color BarColor;   
+    public Color BarColor;
     public Color BarBackGroundColor;
     public Sprite BarBackGroundSprite;
     [Range(1f, 100f)]
@@ -46,7 +46,7 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
-        
+
 
     private void Awake()
     {
@@ -65,7 +65,7 @@ public class ProgressBar : MonoBehaviour
         txtTitle.fontSize = TitleFontSize;
 
         bar.color = BarColor;
-        barBackground.color = BarBackGroundColor; 
+        barBackground.color = BarBackGroundColor;
         barBackground.sprite = BarBackGroundSprite;
 
         UpdateValue(barValue);
@@ -93,7 +93,7 @@ public class ProgressBar : MonoBehaviour
     private void Update()
     {
         if (!Application.isPlaying)
-        {           
+        {
             UpdateValue(50);
             txtTitle.color = TitleColor;
             txtTitle.font = TitleFont;
@@ -102,14 +102,14 @@ public class ProgressBar : MonoBehaviour
             bar.color = BarColor;
             barBackground.color = BarBackGroundColor;
 
-            barBackground.sprite = BarBackGroundSprite;           
+            barBackground.sprite = BarBackGroundSprite;
         }
         else
         {
             if (Alert >= barValue && Time.time > nextPlay)
             {
                 nextPlay = Time.time + RepeatRate;
-                audiosource.PlayOneShot(sound);
+                // audiosource.PlayOneShot(sound);
             }
         }
     }
