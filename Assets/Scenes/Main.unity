@@ -8307,7 +8307,7 @@ GameObject:
   - component: {fileID: 1813992954}
   - component: {fileID: 1813992952}
   m_Layer: 0
-  m_Name: snake_move_side_sheet_0
+  m_Name: SmallSnake
   m_TagString: small snake
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
