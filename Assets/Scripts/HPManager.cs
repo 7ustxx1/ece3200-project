@@ -5,9 +5,6 @@ using UnityEngine;
 public class HPManager : MonoBehaviour
 {
     public ProgressBar playerBar;
-    public GameObject heart;
-    public GameObject halfHeart;
-    public GameObject emptyHeart;
     private float HP;
 
     // Start is called before the first frame update
