@@ -11,7 +11,7 @@ public class SmallSnakeDrop : MonoBehaviour
     void Start()
     {
         StartCoroutine("Drop");
-        PlayerPrefs.SetFloat("snakeDropSpeed", 10);
+        PlayerPrefs.SetFloat("snakeDropSpeed", 5);
     }
 
     IEnumerator Drop()
@@ -19,8 +19,9 @@ public class SmallSnakeDrop : MonoBehaviour
         while (true)
         {
             GameObject.Instantiate(snakePre, transform.GetChild(Random.Range(1, 7)));
+            yield return new WaitForSeconds(PlayerPrefs.GetFloat("snakeDropSpeed"));
         }
-        yield return new WaitForSeconds(PlayerPrefs.GetFloat("snakeDropSpeed"));
+
 
 
     }
