@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bolt : MonoBehaviour
+public class Charged : MonoBehaviour
 {
     public float moveSpeed;
 

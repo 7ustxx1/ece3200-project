@@ -10,6 +10,7 @@ public class HeroKnight : MonoBehaviour {
     [SerializeField] GameObject m_slideDust;
 
     public GameObject boltPrefab;
+    public GameObject waveformPrefab;
 
 
     private Animator            m_animator;
@@ -217,5 +218,23 @@ public class HeroKnight : MonoBehaviour {
         // instantiate a bolt
         GameObject t_bolt = Instantiate(boltPrefab, t_spawn.position, t_spawn.rotation) as GameObject;
 
+    }
+
+    public void WaveformAttack()
+    {
+        // get the spawn position according to the facing direction
+        Transform t_spawn;
+        if (m_facingDirection == 1)
+        {
+            t_spawn = transform.Find("RightWaveformSpawnPos");
+        }
+        else
+        {
+            t_spawn = transform.Find("LeftWaveformSpawnPos");
+        }
+
+
+        // instantiate a bolt
+        GameObject t_bolt = Instantiate(waveformPrefab, t_spawn.position, t_spawn.rotation) as GameObject;
     }
 }
