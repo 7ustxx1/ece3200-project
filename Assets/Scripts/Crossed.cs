@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Charged : MonoBehaviour
+public class Crossed : MonoBehaviour
 {
     public float moveSpeed;
 
-    private float lifeTime = 1f;
+    private float lifeTime = 3f;
 
 
     private void FixedUpdate()
     {
-        transform.Translate(-Vector3.right * moveSpeed * Time.fixedDeltaTime);
+        transform.Translate(Vector3.right * moveSpeed * Time.fixedDeltaTime);
 
         lifeTime -= Time.fixedDeltaTime;
 

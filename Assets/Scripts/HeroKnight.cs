@@ -11,6 +11,7 @@ public class HeroKnight : MonoBehaviour {
 
     public GameObject boltPrefab;
     public GameObject waveformPrefab;
+    public GameObject crossedPrefab;
 
 
     private Animator            m_animator;
@@ -237,4 +238,23 @@ public class HeroKnight : MonoBehaviour {
         // instantiate a bolt
         GameObject t_bolt = Instantiate(waveformPrefab, t_spawn.position, t_spawn.rotation) as GameObject;
     }
+
+    public void CrossedAttack()
+    {
+        // get the spawn position according to the facing direction
+        Transform t_spawn;
+        if (m_facingDirection == 1)
+        {
+            t_spawn = transform.Find("RightCrossedSpawnPos");
+        }
+        else
+        {
+            t_spawn = transform.Find("LeftCrossedSpawnPos");
+        }
+
+
+        // instantiate a bolt
+        GameObject t_bolt = Instantiate(crossedPrefab, t_spawn.position, t_spawn.rotation) as GameObject;
+    }
+
 }
