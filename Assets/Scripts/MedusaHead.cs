@@ -18,7 +18,7 @@ public class MedusaHead : MonoBehaviour
     {
         MedusaHeadAnimator = GetComponent<Animator>();
         ableToAttack = true;
-        Gaze();
+        //Gaze();
         PlayerPrefs.SetFloat("snakeDropSpeed", 1);
     }
 
