@@ -12,6 +12,8 @@ public class TailPartControl : MonoBehaviour
     public bool isEnable;
     Animator animator;
     public float moveSpeed = 1f;
+    public LayerMask whatIsPlayer;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Bolt" && isEnable)
@@ -43,5 +45,43 @@ public class TailPartControl : MonoBehaviour
         gameObject.GetComponentInParent<TailControl>().takeDamage(amount);
     }
 
+    public void RandomAtteck()
+    {
+        int randomIndex;
+        if (!canDoLeft)
+        {
+            randomIndex = Random.Range(0, 2);
+        }
+        else if (!canDoRight)
+        {
+            randomIndex = Random.Range(1, 3);
+        }
+        else
+        {
+            randomIndex = Random.Range(0, 3);
+        }
+
+        if (randomIndex == 0)
+        {
+            atteckLeft();
+        }
+
+        if (randomIndex == 2)
+        {
+            atteckRight();
+        }
+
+    }
+
+    public void atteckLeft()
+    {
+        animator.SetTrigger("doLeft");
+
+    }
+
+    public void atteckRight()
+    {
+        animator.SetTrigger("doRight");
+    }
 
 }

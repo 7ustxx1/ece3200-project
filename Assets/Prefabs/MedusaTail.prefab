@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDoRight: 1
-  canDoLeft: 1
+  canDoLeft: 0
   leftAtteckPosList:
   - {fileID: 2912846943851607810}
   - {fileID: 8091863559429523812}
@@ -288,6 +288,9 @@ MonoBehaviour:
   atteckRange: 0.39
   isEnable: 0
   moveSpeed: 1
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!50 &616444103
 Rigidbody2D:
   serializedVersion: 4
