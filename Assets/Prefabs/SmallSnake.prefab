@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 4981956126632868401}
   - component: {fileID: 4981956126632868402}
   - component: {fileID: 4981956126632868400}
-  m_Layer: 0
+  - component: {fileID: 9097909620385140107}
+  m_Layer: 9
   m_Name: SmallSnake
   m_TagString: small snake
   m_Icon: {fileID: 0}
@@ -164,3 +165,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25626045, y: 0.23}
   m_EdgeRadius: 0
+--- !u!114 &9097909620385140107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981956126632868412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40a28cdc9fc39b4b98ac625f96b28e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordDamage: 0
