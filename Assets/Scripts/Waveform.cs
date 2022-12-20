@@ -50,6 +50,11 @@ public class Waveform : MonoBehaviour
         {
             target = GameObject.Find("MedusaHitPoint").GetComponent<Transform>();
         }
+        else if (currentStage == 4)
+        {
+            target = GameObject.Find("HeadHitPoint").GetComponent<Transform>();
+        }
+
     }
 
     void Update()
