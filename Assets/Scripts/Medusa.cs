@@ -10,6 +10,7 @@ public class Medusa : MonoBehaviour
     private Animator MedusaBodyAnimator;
     private AnimatorStateInfo stateInfo;
     private bool ableToAttack;
+    private bool healthSet = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +22,16 @@ public class Medusa : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerPrefs.GetInt("Stage2Flage") == 1)
+        if (PlayerPrefs.GetInt("Stage2Flag") == 1)
         {
+            if (!healthSet)
+            {
+                PlayerPrefs.SetString("barTitle", "Body Health");
+                PlayerPrefs.SetFloat("enemyHP", health);
+                healthSet = true;
+            }
             MoveIn();
+            PlayerPrefs.SetFloat("enemyHP", health);
         }
 
         stateInfo = MedusaBodyAnimator.GetCurrentAnimatorStateInfo(0);
@@ -48,11 +56,19 @@ public class Medusa : MonoBehaviour
     {
         if (collision.tag == "Bolt")
         {
-            TakeDamage(1f);
+            TakeDamage(5f);
+        }
+        else if (collision.tag == "Waveform")
+        {
+            TakeDamage(2f);
+        }
+        else if (collision.tag == "Crossed")
+        {
+            TakeDamage(8f);
         }
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
 
@@ -68,7 +84,7 @@ public class Medusa : MonoBehaviour
 
         Destroy(gameObject);
 
-        PlayerPrefs.SetInt("Stage4Flag", 1);
+        PlayerPrefs.SetInt("Stage3Flag", 1);
 
     }
 

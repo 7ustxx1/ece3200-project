@@ -5,14 +5,21 @@ using UnityEngine;
 public class MedusaHead : MonoBehaviour
 {
 
-    public float health;
+    public float health = 100f;
     public GameObject dieEffectPrefab;
     public GameObject AcidEffect;
     public GameObject GazeEffect;
+    public GameObject GazeBornPos;
+    public GameObject AcidBornPos;
 
     private Animator MedusaHeadAnimator;
     private AnimatorStateInfo stateInfo;
     private bool ableToAttack;
+    private float attackInterval = 5f;
+    private float attackCooldown = 5f;
+    private int randomIndex;
+    private bool healthSet = false;
+
 
     void Start()
     {
@@ -25,13 +32,27 @@ public class MedusaHead : MonoBehaviour
 
     void Update()
     {
+        if (PlayerPrefs.GetInt("Stage3Flag") == 1)
+        {
+            if (!healthSet)
+            {
+                PlayerPrefs.SetString("barTitle", "Head Health");
+                PlayerPrefs.SetFloat("enemyHP", health);
+                health = 100;
+                healthSet = true;
+            }
+            MoveIn();
+            PlayerPrefs.SetFloat("enemyHP", health);
+            RandomAttack();
+        }
+
         stateInfo = MedusaHeadAnimator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName("MedusaHeadOpenEyes") && stateInfo.normalizedTime >= 1.0f)
         {
             MedusaHeadAnimator.SetInteger("Gaze", 2);
             if (ableToAttack)
             {
-                GameObject effectIns = (GameObject)Instantiate(GazeEffect, transform.position, transform.rotation);
+                GameObject effectIns = (GameObject)Instantiate(GazeEffect, GazeBornPos.transform.position, transform.rotation);
                 Destroy(effectIns, 5f);
             }
             ableToAttack = false;
@@ -46,7 +67,7 @@ public class MedusaHead : MonoBehaviour
             MedusaHeadAnimator.SetInteger("AcidRain", 2);
             if (ableToAttack)
             {
-                GameObject effectIns = (GameObject)Instantiate(AcidEffect, transform.position, transform.rotation);
+                GameObject effectIns = (GameObject)Instantiate(AcidEffect, AcidBornPos.transform.position, transform.rotation);
                 Destroy(effectIns, 5f);
             }
             ableToAttack = false;
@@ -62,7 +83,24 @@ public class MedusaHead : MonoBehaviour
     {
         if (collision.tag == "Bolt")
         {
-            TakeDamage(1f);
+            TakeDamage(5f);
+        }
+        else if (collision.tag == "Waveform")
+        {
+            TakeDamage(2f);
+        }
+        else if (collision.tag == "Crossed")
+        {
+            TakeDamage(8f);
+        }
+    }
+
+
+    void MoveIn()
+    {
+        if (transform.position.x > 4.5)
+        {
+            transform.position -= new Vector3(2 * Time.deltaTime, 0, 0);
         }
     }
 
@@ -94,5 +132,26 @@ public class MedusaHead : MonoBehaviour
     void AcidRain()
     {
         MedusaHeadAnimator.SetInteger("AcidRain", 1);
+    }
+
+    void RandomAttack()
+    {
+        if (attackCooldown > 0)
+        {
+            attackCooldown -= Time.deltaTime;
+        }
+        if (attackCooldown <= 0)
+        {
+            randomIndex = Random.Range(0, 2);
+            if(randomIndex == 0)
+            {
+                Gaze();
+            }
+            if(randomIndex == 1)
+            {
+                AcidRain();
+            }
+            attackCooldown = attackInterval;
+        }
     }
 }

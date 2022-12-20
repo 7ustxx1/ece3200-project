@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class HeroKnight : MonoBehaviour
 {
 
-    [SerializeField] float      m_speed = 4.0f;
-    [SerializeField] float      m_jumpForce = 5f;
-    [SerializeField] float      m_rollForce = 6.0f;
-    [SerializeField] bool       m_noBlood = false;
+    [SerializeField] float m_speed = 4.0f;
+    [SerializeField] float m_jumpForce = 5f;
+    [SerializeField] float m_rollForce = 6.0f;
+    [SerializeField] bool m_noBlood = false;
     [SerializeField] GameObject m_slideDust;
 
     public GameObject boltPrefab;
@@ -21,28 +22,29 @@ public class HeroKnight : MonoBehaviour
     public LayerMask whatIsEnemies;
     public float atteckRange;
 
-    private Animator            m_animator;
-    private Rigidbody2D         m_body2d;
-    private Sensor_HeroKnight   m_groundSensor;
-    private Sensor_HeroKnight   m_wallSensorR1;
-    private Sensor_HeroKnight   m_wallSensorR2;
-    private Sensor_HeroKnight   m_wallSensorL1;
-    private Sensor_HeroKnight   m_wallSensorL2;
-    private bool                m_grounded = false;
-    private bool                m_rolling = false;
-    private bool                isBlocking;
-    private bool                m_attack = false;
-    private int                 m_facingDirection = 1;
-    private int                 m_currentAttack = 1;// default weapon is weapon 1
-    private int                 jumpCount = 2;
-    private float               m_timeSinceAttack = 0.0f;
-    private float               m_delayToIdle = 0.0f;
-    private float               m_attackGap = 0.75f;// weapon 1's attack gap
+    private Animator m_animator;
+    private Rigidbody2D m_body2d;
+    private Sensor_HeroKnight m_groundSensor;
+    private Sensor_HeroKnight m_wallSensorR1;
+    private Sensor_HeroKnight m_wallSensorR2;
+    private Sensor_HeroKnight m_wallSensorL1;
+    private Sensor_HeroKnight m_wallSensorL2;
+    private bool m_grounded = false;
+    private bool m_rolling = false;
+    private bool isBlocking;
+    private bool m_attack = false;
+    private int m_facingDirection = 1;
+    private int m_currentAttack = 1;// default weapon is weapon 1
+    private int jumpCount = 2;
+    private float m_timeSinceAttack = 0.0f;
+    private float m_delayToIdle = 0.0f;
+    private float m_attackGap = 0.75f;// weapon 1's attack gap
 
     private bool acidHurt;
     private bool gazeHurt;
     private float petrifyTime = 3f;
     private float petrifyTimeLeft = 0f;
+    private bool killed = false;
 
 
     // Use this for initialization
@@ -64,6 +66,7 @@ public class HeroKnight : MonoBehaviour
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
         healthBar.BarValue = health;
+
         //Check if character just landed on the ground
         if (!m_grounded && m_groundSensor.State())
         {
@@ -80,7 +83,10 @@ public class HeroKnight : MonoBehaviour
         }
 
         // -- Handle input and movement --
+
         float inputX = Input.GetAxis("Horizontal");
+
+
 
         // Swap direction of sprite depending on walk direction
         if (inputX > 0 && !m_attack && petrifyTimeLeft <= 0)
@@ -96,8 +102,12 @@ public class HeroKnight : MonoBehaviour
         }
 
         // Move
-        if (!m_rolling && !isBlocking && !m_attack && petrifyTimeLeft <= 0)
-            m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        if (!killed)
+        {
+            if (!m_rolling && !isBlocking && !m_attack && petrifyTimeLeft <= 0)
+                m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        }
+
 
         //Set AirSpeed in animator
         m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
@@ -110,11 +120,11 @@ public class HeroKnight : MonoBehaviour
         }
 
         ////Death
-        //if (Input.GetKeyDown("e") && !m_rolling)
-        //{
-        //    m_animator.SetBool("noBlood", m_noBlood);
-        //    m_animator.SetTrigger("Death");
-        //}
+        if (Input.GetKeyDown("e") && !m_rolling)
+        {
+            m_animator.SetBool("noBlood", m_noBlood);
+            m_animator.SetTrigger("Death");
+        }
 
         ////Hurt
         //else if (Input.GetKeyDown("q") && !m_rolling)
@@ -145,7 +155,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         //Attack
-        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > m_attackGap && !m_rolling &&
+        else if (!killed && Input.GetMouseButtonDown(0) && m_timeSinceAttack > m_attackGap && !m_rolling &&
                  !((m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State())))
         {
             // Change the stage to attack
@@ -177,7 +187,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         // Block
-        else if (Input.GetMouseButtonDown(1) && !m_rolling)
+        else if (Input.GetMouseButtonDown(1) && !m_rolling && !killed)
         {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
@@ -191,7 +201,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && m_grounded && petrifyTimeLeft <= 0)
+        else if (Input.GetKeyDown("left shift") && !m_rolling && m_grounded && petrifyTimeLeft <= 0 && !killed)
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
@@ -199,7 +209,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         //Jump
-        else if (Input.GetKeyDown("space") && !m_rolling && (m_grounded || jumpCount > 0) && !m_attack && petrifyTimeLeft <= 0)
+        else if (Input.GetKeyDown("space") && !m_rolling && (m_grounded || jumpCount > 0) && !m_attack && petrifyTimeLeft <= 0 && !killed)
         {
             m_animator.SetTrigger("Jump");
             m_grounded = false;
@@ -210,7 +220,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         //Run
-        else if (Mathf.Abs(inputX) > Mathf.Epsilon)
+        else if (Mathf.Abs(inputX) > Mathf.Epsilon && !killed)
         {
             // Reset timer
             m_delayToIdle = 0.05f;
@@ -224,6 +234,18 @@ public class HeroKnight : MonoBehaviour
             m_delayToIdle -= Time.deltaTime;
             if (m_delayToIdle < 0)
                 m_animator.SetInteger("AnimState", 0);
+        }
+        // Die
+        if (health <= 0 && !m_rolling)
+        {
+            if (!killed)
+            {
+                m_animator.SetBool("noBlood", m_noBlood);
+                m_animator.SetTrigger("Death");
+                killed = true;
+                SceneManager.LoadScene(3);
+            }
+
         }
 
         CheckAcidHurt();
@@ -327,7 +349,7 @@ public class HeroKnight : MonoBehaviour
             health -= 10;
             m_animator.SetTrigger("Hurt");
         }
-        
+
     }
 
     private void CheckAcidHurt()
@@ -336,7 +358,7 @@ public class HeroKnight : MonoBehaviour
         {
             health -= 1;
             m_animator.SetTrigger("Hurt");
-            
+
             acidHurt = false;
         }
     }
@@ -348,14 +370,18 @@ public class HeroKnight : MonoBehaviour
 
     private void CheckGazedHurt()
     {
-        if (gazeHurt && !isBlocking && petrifyTimeLeft <= 0)
+        if (gazeHurt && !isBlocking && petrifyTimeLeft <= 0 && m_facingDirection == 1)
         {
             health -= 10;
             petrifyTimeLeft = petrifyTime;
-            
+
             gazeHurt = false;
         }
-        if(petrifyTimeLeft > 0)
+        else if (gazeHurt)
+        {
+            gazeHurt = false;
+        }
+        if (petrifyTimeLeft > 0)
         {
             petrifyTimeLeft -= Time.deltaTime;
             gazeHurt = false;
@@ -379,5 +405,13 @@ public class HeroKnight : MonoBehaviour
     {
         health -= amount;
         m_animator.SetTrigger("Hurt");
+    }
+
+    void OnTriggerEnter2D(Collider2D bol)
+    {
+        if (bol.tag == "tailHit")
+        {
+            PlayerDamage(10f);
+        }
     }
 }

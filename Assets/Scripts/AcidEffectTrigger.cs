@@ -11,12 +11,9 @@ public class AcidEffectTrigger : MonoBehaviour
         //ps = transform.GetComponent<ParticleSystem>();
     }
 
-
-
-
     private void OnParticleCollision(GameObject other)
     {
-        
+
         if (other.tag == "Player")
         {
             //Debug.Log("碰撞到了Player");
