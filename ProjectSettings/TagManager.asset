@@ -17,6 +17,7 @@ TagManager:
   - Acid
   - Crossed
   - Waveform
+  - tailHit
   layers:
   - Default
   - TransparentFX
