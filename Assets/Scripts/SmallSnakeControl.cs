@@ -4,28 +4,36 @@ using UnityEngine;
 
 public class SmallSnakeControl : MonoBehaviour
 {
+    private Animator animator;
+    private AnimatorStateInfo info;
+
 
     public float moveSpeed = 1.0f;
 
     private bool moveLeftFlag = false;
+
+    private bool moving = true;
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (moving)
+        {
+            if (moveLeftFlag)
+            {
+                moveLeft();
+            }
+            else
+            {
+                moveRight();
+            }
+        }
 
-        if (moveLeftFlag)
-        {
-            moveLeft();
-        }
-        else
-        {
-            moveRight();
-        }
 
 
 
@@ -63,6 +71,13 @@ public class SmallSnakeControl : MonoBehaviour
     }
 
     void Die()
+    {
+        animator.SetBool("isDead", true);
+        moving = false;
+
+    }
+
+    void Remove()
     {
         Destroy(gameObject);
     }

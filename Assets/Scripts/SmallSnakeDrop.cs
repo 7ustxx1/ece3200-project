@@ -18,7 +18,7 @@ public class SmallSnakeDrop : MonoBehaviour
     {
         while (true)
         {
-            GameObject.Instantiate(snakePre, transform.GetChild(Random.Range(1, 7)));
+            GameObject.Instantiate(snakePre, transform.GetChild(Random.Range(1, 8)));
             yield return new WaitForSeconds(PlayerPrefs.GetFloat("snakeDropSpeed"));
         }
 
