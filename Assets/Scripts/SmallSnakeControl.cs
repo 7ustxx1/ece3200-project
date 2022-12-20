@@ -58,7 +58,7 @@ public class SmallSnakeControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Bolt")
+        if (collision.tag == "Bolt" || collision.tag == "Waveform" || collision.tag == "Crossed")
         {
             Die();
         }

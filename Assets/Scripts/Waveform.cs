@@ -50,6 +50,11 @@ public class Waveform : MonoBehaviour
         {
             target = GameObject.Find("MedusaHitPoint").GetComponent<Transform>();
         }
+        else if (currentStage == 4)
+        {
+            target = GameObject.Find("HeadHitPoint").GetComponent<Transform>();
+        }
+
     }
 
     void Update()
@@ -74,7 +79,7 @@ public class Waveform : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "enemy" || other.tag == "Body" || other.tag == "Tail")
+        if (other.tag == "enemy" || other.tag == "Body" || other.tag == "Tail" || other.tag == "Head")
         {
             t_hit = Instantiate<GameObject>(waveformHitPrefab, transform.position, transform.rotation) as GameObject;
 
