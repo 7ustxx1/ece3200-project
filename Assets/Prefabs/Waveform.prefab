@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1096368396831760485}
   m_Layer: 0
   m_Name: Waveform
-  m_TagString: Untagged
+  m_TagString: Waveform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveformHitPrefab: {fileID: 8762441756994073457, guid: 162d8f5a265b0c742899667584d0ce8b,
     type: 3}
+  t_hit: {fileID: 0}
   moveSpeed: 7
   target: {fileID: 0}
 --- !u!58 &1096368396831760485

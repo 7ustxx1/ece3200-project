@@ -60,7 +60,7 @@ public class Medusa : MonoBehaviour
         }
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
 

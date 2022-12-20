@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6838969988348644448}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HitPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,8 @@ GameObject:
   - component: {fileID: 3030487688211583234}
   - component: {fileID: 3030487688211583237}
   - component: {fileID: 3030487688211583236}
-  m_Layer: 0
+  - component: {fileID: 934337517234259910}
+  m_Layer: 9
   m_Name: MedusaBody
   m_TagString: Body
   m_Icon: {fileID: 0}
@@ -198,3 +199,16 @@ MonoBehaviour:
   health: 100
   dieEffectPrefab: {fileID: 5515739279999250964, guid: bc4b9979b3b1b074d9d3f9d7470ce054,
     type: 3}
+--- !u!114 &934337517234259910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030487688211583486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40a28cdc9fc39b4b98ac625f96b28e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordDamage: 10
