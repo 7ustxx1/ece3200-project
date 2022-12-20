@@ -57,6 +57,8 @@ public class TailControl : MonoBehaviour
 
     }
 
+
+
     void Die()
     {
         PlayerPrefs.SetInt("Stage2Flag", 1);
