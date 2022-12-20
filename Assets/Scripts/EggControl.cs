@@ -24,6 +24,22 @@ public class EggControl : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bolt")
+        {
+            TakeDamage(10f);
+        }
+        else if (collision.tag == "Waveform")
+        {
+            TakeDamage(5f);
+        }
+        else if (collision.tag == "Crossed")
+        {
+            TakeDamage(20f);
+        }
+    }
+
     void Die()
     {
         animator.SetBool("isDead", true);

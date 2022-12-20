@@ -17,6 +17,7 @@ public class TailControl : MonoBehaviour
     private void Start()
     {
         randomTail = Random.Range(0, 3);
+        PlayerPrefs.SetInt("CurrentTail", randomTail);
     }
 
 

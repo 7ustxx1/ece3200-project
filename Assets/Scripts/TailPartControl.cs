@@ -20,6 +20,14 @@ public class TailPartControl : MonoBehaviour
         {
             gameObject.GetComponentInParent<TailControl>().takeDamage(10);
         }
+        else if (collision.tag == "Waveform" && isEnable)
+        {
+            gameObject.GetComponentInParent<TailControl>().takeDamage(5);
+        }
+        else if (collision.tag == "Crossed" && isEnable)
+        {
+            gameObject.GetComponentInParent<TailControl>().takeDamage(20);
+        }
     }
 
     public void MoveDown()
