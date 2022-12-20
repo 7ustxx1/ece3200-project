@@ -34,6 +34,7 @@ public class HeroKnight : MonoBehaviour
 
     private bool isBlocking;
     private int jumpCount = 2;
+    private bool acidHurt;
 
 
     // Use this for initialization
@@ -207,6 +208,8 @@ public class HeroKnight : MonoBehaviour
             if (m_delayToIdle < 0)
                 m_animator.SetInteger("AnimState", 0);
         }
+
+        CheckAcidHurt();
     }
 
     // Animation Events
@@ -265,6 +268,23 @@ public class HeroKnight : MonoBehaviour
             health -= 10;
             m_animator.SetTrigger("Hurt");
         }
+        
+    }
+
+    private void CheckAcidHurt()
+    {
+        if (acidHurt)
+        {
+            health -= 1;
+            m_animator.SetTrigger("Hurt");
+            //Debug.Log("hurt");
+            acidHurt = false;
+        }
+    }
+
+    void setacidHurt(bool hurt)
+    {
+        acidHurt = hurt;
     }
 
     void OnDrawGizmosSelected()
