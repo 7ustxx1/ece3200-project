@@ -26,11 +26,12 @@ public class Medusa : MonoBehaviour
         {
             if (!healthSet)
             {
-                PlayerPrefs.SetString("barTitle", "Tail Health");
+                PlayerPrefs.SetString("barTitle", "Body Health");
                 PlayerPrefs.SetFloat("enemyHP", health);
                 healthSet = true;
             }
             MoveIn();
+            PlayerPrefs.SetFloat("enemyHP", health);
         }
 
         stateInfo = MedusaBodyAnimator.GetCurrentAnimatorStateInfo(0);
