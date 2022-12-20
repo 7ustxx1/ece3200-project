@@ -43,7 +43,7 @@ public class Waveform : MonoBehaviour
             }
             else if (currentTail == 2)
             {
-                target = GameObject.Find("TailHitPoint2").GetComponent<Transform>();
+                target = GameObject.Find("TailHitPoint3").GetComponent<Transform>();
             }
         }
         else if (currentStage == 3)
