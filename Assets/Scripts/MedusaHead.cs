@@ -9,6 +9,8 @@ public class MedusaHead : MonoBehaviour
     public GameObject dieEffectPrefab;
     public GameObject AcidEffect;
     public GameObject GazeEffect;
+    public GameObject GazeBornPos;
+    public GameObject AcidBornPos;
 
     private Animator MedusaHeadAnimator;
     private AnimatorStateInfo stateInfo;
@@ -50,7 +52,7 @@ public class MedusaHead : MonoBehaviour
             MedusaHeadAnimator.SetInteger("Gaze", 2);
             if (ableToAttack)
             {
-                GameObject effectIns = (GameObject)Instantiate(GazeEffect, transform.position, transform.rotation);
+                GameObject effectIns = (GameObject)Instantiate(GazeEffect, GazeBornPos.transform.position, transform.rotation);
                 Destroy(effectIns, 5f);
             }
             ableToAttack = false;
@@ -65,7 +67,7 @@ public class MedusaHead : MonoBehaviour
             MedusaHeadAnimator.SetInteger("AcidRain", 2);
             if (ableToAttack)
             {
-                GameObject effectIns = (GameObject)Instantiate(AcidEffect, transform.position, transform.rotation);
+                GameObject effectIns = (GameObject)Instantiate(AcidEffect, AcidBornPos.transform.position, transform.rotation);
                 Destroy(effectIns, 5f);
             }
             ableToAttack = false;
