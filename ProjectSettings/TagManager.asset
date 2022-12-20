@@ -13,6 +13,7 @@ TagManager:
   - Head
   - Body
   - Ground
+  - Dead
   - Acid
   layers:
   - Default
@@ -24,8 +25,8 @@ TagManager:
   - 
   - 
   - Background
-  - 
-  - 
+  - Enemy
+  - Player
   - 
   - 
   - 
