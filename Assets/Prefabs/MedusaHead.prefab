@@ -227,7 +227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  dieEffectPrefab: {fileID: 0}
+  dieEffectPrefab: {fileID: 4979416054537707975, guid: 20f93c363acc5e74d8c2e4185b3a0994,
+    type: 3}
   AcidEffect: {fileID: 7543614312342983211, guid: 0bbcbe28dde2ac24ab6186622e82c064,
     type: 3}
   GazeEffect: {fileID: 7023685456434548555, guid: bdb743f08462cee4ebb6748f98db3709,
