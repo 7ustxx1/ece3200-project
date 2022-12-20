@@ -27,6 +27,7 @@ public class EggControl : MonoBehaviour
 
     public void Remove()
     {
+        Debug.Log("Destory");
         Destroy(gameObject);
     }
 }
