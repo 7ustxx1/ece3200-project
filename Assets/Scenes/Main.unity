@@ -3843,6 +3843,11 @@ PrefabInstance:
     - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: canDoLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
+        type: 3}
+      propertyPath: canDoRight
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7678011549787347873, guid: 1fe9cbe1ea743c64c883979e04787cc3,
@@ -4366,12 +4371,12 @@ PrefabInstance:
     - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: canDoRight
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: canDoLeft
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7678011549787347873, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}

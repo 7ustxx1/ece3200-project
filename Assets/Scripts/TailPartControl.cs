@@ -100,7 +100,7 @@ public class TailPartControl : MonoBehaviour
 
     public void atteckLeft()
     {
-        animator.SetBool("doLeft", true);
+        animator.SetTrigger("doLeft");
         Collider2D[] enemiseToDamage1;
         Collider2D[] enemiseToDamage2;
         enemiseToDamage1 = Physics2D.OverlapCircleAll(leftAtteckPosList[0].position, atteckRange, whatIsPlayer);
@@ -118,7 +118,7 @@ public class TailPartControl : MonoBehaviour
 
     public void atteckRight()
     {
-        animator.SetBool("doRight", true);
+        animator.SetTrigger("doRight");
         Collider2D[] enemiseToDamage1;
         Collider2D[] enemiseToDamage2;
         enemiseToDamage1 = Physics2D.OverlapCircleAll(rightAtteckPosList[0].position, atteckRange, whatIsPlayer);
