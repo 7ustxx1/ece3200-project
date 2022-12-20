@@ -84,7 +84,7 @@ public class Medusa : MonoBehaviour
 
         Destroy(gameObject);
 
-        PlayerPrefs.SetInt("Stage4Flag", 1);
+        PlayerPrefs.SetInt("Stage3Flag", 1);
 
     }
 

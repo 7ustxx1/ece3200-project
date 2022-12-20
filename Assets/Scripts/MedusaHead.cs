@@ -30,7 +30,7 @@ public class MedusaHead : MonoBehaviour
 
     void Update()
     {
-        if (PlayerPrefs.GetInt("Stage4Flag") == 1)
+        if (PlayerPrefs.GetInt("Stage3Flag") == 1)
         {
             if (!healthSet)
             {
