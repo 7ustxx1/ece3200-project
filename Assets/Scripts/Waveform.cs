@@ -54,12 +54,19 @@ public class Waveform : MonoBehaviour
 
     void Update()
     {
-        CheckHint();
-        UpdateRotation();
-        UpdatePosition();
+        try
+        {
+            CheckHint();
+            UpdateRotation();
+            UpdatePosition();
 
-        lifeTime -= Time.deltaTime;
-        if (lifeTime < 0)
+            lifeTime -= Time.deltaTime;
+            if (lifeTime < 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        catch
         {
             Destroy(gameObject);
         }
