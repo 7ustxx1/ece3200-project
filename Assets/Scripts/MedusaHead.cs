@@ -7,14 +7,17 @@ public class MedusaHead : MonoBehaviour
 
     public float health;
     public GameObject dieEffectPrefab;
+    public GameObject AcidEffect;
 
     private Animator MedusaHeadAnimator;
     private AnimatorStateInfo stateInfo;
+    private bool ableToAttack;
 
     void Start()
     {
         MedusaHeadAnimator = GetComponent<Animator>();
-        Gaze();
+        ableToAttack = true;
+        AcidRain();
         PlayerPrefs.SetFloat("snakeDropSpeed", 1);
     }
 
@@ -33,10 +36,17 @@ public class MedusaHead : MonoBehaviour
         if (stateInfo.IsName("MedusaHeadOpenMouth") && stateInfo.normalizedTime >= 1.0f)
         {
             MedusaHeadAnimator.SetInteger("AcidRain", 2);
+            if (ableToAttack)
+            {
+                GameObject effectIns = (GameObject)Instantiate(AcidEffect, transform.position, transform.rotation);
+                Destroy(effectIns, 5f);
+            }
+            ableToAttack = false;
         }
         if (stateInfo.IsName("MedusaHeadCloseMouth") && stateInfo.normalizedTime >= 1.0f)
         {
             MedusaHeadAnimator.SetInteger("AcidRain", 0);
+            ableToAttack = true;
         }
     }
 
