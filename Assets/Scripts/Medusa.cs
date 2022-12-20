@@ -16,9 +16,16 @@ public class Medusa : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        MoveIn();
     }
 
+    void MoveIn()
+    {
+        if (transform.position.x > 4.5)
+        {
+            transform.position -= new Vector3(2 * Time.deltaTime, 0, 0);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Bolt")
