@@ -267,9 +267,16 @@ public class HeroKnight : MonoBehaviour
         }
     }
 
-    // void OnDrawGizmosSelected()
-    // {
-    //     Gizmos.color = Color.red;
-    //     Gizmos.DrawWireSphere(atteckPos.position, atteckRange);
-    // }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(leftAtteckPos.position, atteckRange);
+        Gizmos.DrawWireSphere(rightAtteckPos.position, atteckRange);
+    }
+
+    public void PlayerDamage(float amount)
+    {
+        health -= amount;
+        m_animator.SetTrigger("Hurt");
+    }
 }
