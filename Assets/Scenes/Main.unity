@@ -3840,6 +3840,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 360128538}
     m_Modifications:
+    - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
+        type: 3}
+      propertyPath: canDoLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7678011549787347873, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: m_Name
@@ -4442,21 +4447,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 360128538}
     m_Modifications:
-    - target: {fileID: 5798422888077995856, guid: 1fe9cbe1ea743c64c883979e04787cc3,
-        type: 3}
-      propertyPath: m_Name
-      value: TailHitPoint2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
-        type: 3}
-      propertyPath: whatIsPlayer.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
-        type: 3}
-      propertyPath: canDoLeft
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7678011549787347873, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: m_Name
@@ -4516,11 +4506,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678011549787347879, guid: 1fe9cbe1ea743c64c883979e04787cc3,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fe9cbe1ea743c64c883979e04787cc3, type: 3}
