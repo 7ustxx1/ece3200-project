@@ -10,6 +10,7 @@ public class Medusa : MonoBehaviour
     private Animator MedusaBodyAnimator;
     private AnimatorStateInfo stateInfo;
     private bool ableToAttack;
+    private bool healthSet = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,12 @@ public class Medusa : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Stage2Flag") == 1)
         {
+            if (!healthSet)
+            {
+                PlayerPrefs.SetString("barTitle", "Tail Health");
+                PlayerPrefs.SetFloat("enemyHP", health);
+                healthSet = true;
+            }
             MoveIn();
         }
 
