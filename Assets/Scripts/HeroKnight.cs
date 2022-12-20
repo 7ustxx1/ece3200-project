@@ -83,13 +83,13 @@ public class HeroKnight : MonoBehaviour
         float inputX = Input.GetAxis("Horizontal");
 
         // Swap direction of sprite depending on walk direction
-        if (inputX > 0 && !m_attack)
+        if (inputX > 0 && !m_attack && petrifyTimeLeft <= 0)
         {
             GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
         }
 
-        else if (inputX < 0 && !m_attack)
+        else if (inputX < 0 && !m_attack && petrifyTimeLeft <= 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
@@ -109,23 +109,23 @@ public class HeroKnight : MonoBehaviour
             m_animator.SetBool("WallSlide", (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State()));
         }
 
-        //Death
-        if (Input.GetKeyDown("e") && !m_rolling)
-        {
-            m_animator.SetBool("noBlood", m_noBlood);
-            m_animator.SetTrigger("Death");
-        }
+        ////Death
+        //if (Input.GetKeyDown("e") && !m_rolling)
+        //{
+        //    m_animator.SetBool("noBlood", m_noBlood);
+        //    m_animator.SetTrigger("Death");
+        //}
 
-        //Hurt
-        else if (Input.GetKeyDown("q") && !m_rolling)
-        {
-            m_animator.SetTrigger("Hurt");
-            health -= 10;
-        }
-        else if (Input.GetKeyDown("r"))
-        {
-            health = 100;
-        }
+        ////Hurt
+        //else if (Input.GetKeyDown("q") && !m_rolling)
+        //{
+        //    m_animator.SetTrigger("Hurt");
+        //    health -= 10;
+        //}
+        //else if (Input.GetKeyDown("r"))
+        //{
+        //    health = 100;
+        //}
 
         // change weapon
         else if (Input.GetKeyDown("1"))// weapon 1 ==> bolt
