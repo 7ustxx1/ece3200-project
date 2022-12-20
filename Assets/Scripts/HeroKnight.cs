@@ -13,7 +13,6 @@ public class HeroKnight : MonoBehaviour {
     public GameObject waveformPrefab;
     public GameObject crossedPrefab;
 
-
     private Animator            m_animator;
     private Rigidbody2D         m_body2d;
     private Sensor_HeroKnight   m_groundSensor;
@@ -23,13 +22,15 @@ public class HeroKnight : MonoBehaviour {
     private Sensor_HeroKnight   m_wallSensorL2;
     private bool                m_grounded = false;
     private bool                m_rolling = false;
+    private bool                isBlocking;
+    private bool                m_attack = false;
     private int                 m_facingDirection = 1;
-    private int                 m_currentAttack = 0;
+    private int                 m_currentAttack = 1;// default weapon is weapon 1
+    private int                 jumpCount = 2;
     private float               m_timeSinceAttack = 0.0f;
     private float               m_delayToIdle = 0.0f;
+    private float               m_attackGap = 0.75f;// weapon 1's attack gap
 
-    private bool isBlocking;
-    private int jumpCount = 2;
 
 
     // Use this for initialization
@@ -69,20 +70,20 @@ public class HeroKnight : MonoBehaviour {
         float inputX = Input.GetAxis("Horizontal");
 
         // Swap direction of sprite depending on walk direction
-        if (inputX > 0)
+        if (inputX > 0 && !m_attack)
         {
             GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
         }
             
-        else if (inputX < 0)
+        else if (inputX < 0 && !m_attack)
         {
             GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
         }
 
         // Move
-        if (!m_rolling && !isBlocking)
+        if (!m_rolling && !isBlocking && !m_attack)
             m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
 
         //Set AirSpeed in animator
@@ -106,18 +107,28 @@ public class HeroKnight : MonoBehaviour {
         else if (Input.GetKeyDown("q") && !m_rolling)
             m_animator.SetTrigger("Hurt");
 
-        //Attack
-        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
+        // change weapon
+        else if (Input.GetKeyDown("1"))// weapon 1 ==> bolt
         {
-            m_currentAttack++;
+            m_currentAttack = 1;
+            m_attackGap = 0.75f;
+        }
+        else if (Input.GetKeyDown("2"))// weapon 2 ==> waveform
+        {
+            m_currentAttack = 2;
+            m_attackGap = 0.5f;
+        }
+        else if (Input.GetKeyDown("3"))// weapon 3 ==> crossed
+        {
+            m_currentAttack = 3;
+            m_attackGap = 1f;
+        }
 
-            // Loop back to one after third attack
-            if (m_currentAttack > 3)
-                m_currentAttack = 1;
-
-            // Reset Attack combo if time since last attack is too large
-            if (m_timeSinceAttack > 1.0f)
-                m_currentAttack = 1;
+        //Attack
+        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > m_attackGap && !m_rolling)
+        {
+            // Change the stage to attack
+            m_attack = true;
 
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             m_animator.SetTrigger("Attack" + m_currentAttack);
@@ -149,7 +160,7 @@ public class HeroKnight : MonoBehaviour {
         }
 
         //Jump
-        else if (Input.GetKeyDown("space") && !m_rolling && (m_grounded || jumpCount > 0))
+        else if (Input.GetKeyDown("space") && !m_rolling && (m_grounded || jumpCount > 0) && !m_attack)
         {
             m_animator.SetTrigger("Jump");
             m_grounded = false;
@@ -160,7 +171,7 @@ public class HeroKnight : MonoBehaviour {
         }
 
         //Run
-        else if (Mathf.Abs(inputX) > Mathf.Epsilon)
+        else if (Mathf.Abs(inputX) > Mathf.Epsilon && !m_attack)
         {
             // Reset timer
             m_delayToIdle = 0.05f;
@@ -182,6 +193,12 @@ public class HeroKnight : MonoBehaviour {
     void AE_ResetRoll()
     {
         m_rolling = false;
+    }    
+    
+    // Called in end of attack animation.
+    void AE_ResetAttack()
+    {
+        m_attack = false;
     }
 
     // Called in slide animation.
