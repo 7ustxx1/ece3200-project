@@ -78,12 +78,12 @@ public class TailControl : MonoBehaviour
     {
         while (true)
         {
-            if (enabled)
+            if (transform.GetChild(randomTail).GetComponent<TailPartControl>().isEnable)
             {
                 transform.GetChild(randomTail).GetComponent<TailPartControl>().RandomAtteck();
             }
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(2f);
         }
 
     }
