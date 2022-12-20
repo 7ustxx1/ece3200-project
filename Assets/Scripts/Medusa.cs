@@ -21,7 +21,7 @@ public class Medusa : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerPrefs.GetInt("Stage2Flage") == 1)
+        if (PlayerPrefs.GetInt("Stage2Flag") == 1)
         {
             MoveIn();
         }
