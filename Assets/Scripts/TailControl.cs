@@ -37,7 +37,7 @@ public class TailControl : MonoBehaviour
 
     public void takeDamage(float amount)
     {
-        Debug.Log("HIT");
+
         HP -= amount;
     }
 
