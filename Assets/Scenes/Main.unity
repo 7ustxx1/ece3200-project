@@ -527,12 +527,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &323608273 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4028488286607997870, guid: a4b4a6d32bcb19248a754d6602ffc7e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6855557595897071052}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &337740600
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,12 +882,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &459351560 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1850929076122486897, guid: a4b4a6d32bcb19248a754d6602ffc7e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6855557595897071052}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &479370876
 GameObject:
   m_ObjectHideFlags: 0
@@ -9182,6 +9170,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 360128538}
     m_Modifications:
+    - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
+        type: 3}
+      propertyPath: canDoRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
+        type: 3}
+      propertyPath: canDoLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7678011549787347873, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: m_Name
@@ -9729,31 +9727,6 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1533347294}
-    - target: {fileID: 9043920546160527475, guid: a4b4a6d32bcb19248a754d6602ffc7e4,
-        type: 3}
-      propertyPath: atteckPos
-      value: 
-      objectReference: {fileID: 323608273}
-    - target: {fileID: 9043920546160527475, guid: a4b4a6d32bcb19248a754d6602ffc7e4,
-        type: 3}
-      propertyPath: atteckRange
-      value: 0.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 9043920546160527475, guid: a4b4a6d32bcb19248a754d6602ffc7e4,
-        type: 3}
-      propertyPath: whatIsEnemies.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 9043920546160527475, guid: a4b4a6d32bcb19248a754d6602ffc7e4,
-        type: 3}
-      propertyPath: rightAtteckPos
-      value: 
-      objectReference: {fileID: 323608273}
-    - target: {fileID: 9043920546160527475, guid: a4b4a6d32bcb19248a754d6602ffc7e4,
-        type: 3}
-      propertyPath: leftAtteckPos
-      value: 
-      objectReference: {fileID: 459351560}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
 --- !u!1001 &7131362162773495117
@@ -9832,6 +9805,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 360128538}
     m_Modifications:
+    - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
+        type: 3}
+      propertyPath: canDoRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
+        type: 3}
+      propertyPath: canDoLeft
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7678011549787347873, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: m_Name

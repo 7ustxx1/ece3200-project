@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TailPartControl : MonoBehaviour
 {
+    public bool canDoRight;
+    public bool canDoLeft;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Bolt")
@@ -12,4 +14,6 @@ public class TailPartControl : MonoBehaviour
             gameObject.GetComponentInParent<TailControl>().takeDamage(10);
         }
     }
+
+
 }
