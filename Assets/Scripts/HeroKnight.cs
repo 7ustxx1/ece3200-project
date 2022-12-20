@@ -4,10 +4,10 @@ using System.Collections;
 public class HeroKnight : MonoBehaviour
 {
 
-    [SerializeField] float      m_speed = 4.0f;
-    [SerializeField] float      m_jumpForce = 5f;
-    [SerializeField] float      m_rollForce = 6.0f;
-    [SerializeField] bool       m_noBlood = false;
+    [SerializeField] float m_speed = 4.0f;
+    [SerializeField] float m_jumpForce = 5f;
+    [SerializeField] float m_rollForce = 6.0f;
+    [SerializeField] bool m_noBlood = false;
     [SerializeField] GameObject m_slideDust;
 
     public GameObject boltPrefab;
@@ -21,23 +21,23 @@ public class HeroKnight : MonoBehaviour
     public LayerMask whatIsEnemies;
     public float atteckRange;
 
-    private Animator            m_animator;
-    private Rigidbody2D         m_body2d;
-    private Sensor_HeroKnight   m_groundSensor;
-    private Sensor_HeroKnight   m_wallSensorR1;
-    private Sensor_HeroKnight   m_wallSensorR2;
-    private Sensor_HeroKnight   m_wallSensorL1;
-    private Sensor_HeroKnight   m_wallSensorL2;
-    private bool                m_grounded = false;
-    private bool                m_rolling = false;
-    private bool                isBlocking;
-    private bool                m_attack = false;
-    private int                 m_facingDirection = 1;
-    private int                 m_currentAttack = 1;// default weapon is weapon 1
-    private int                 jumpCount = 2;
-    private float               m_timeSinceAttack = 0.0f;
-    private float               m_delayToIdle = 0.0f;
-    private float               m_attackGap = 0.75f;// weapon 1's attack gap
+    private Animator m_animator;
+    private Rigidbody2D m_body2d;
+    private Sensor_HeroKnight m_groundSensor;
+    private Sensor_HeroKnight m_wallSensorR1;
+    private Sensor_HeroKnight m_wallSensorR2;
+    private Sensor_HeroKnight m_wallSensorL1;
+    private Sensor_HeroKnight m_wallSensorL2;
+    private bool m_grounded = false;
+    private bool m_rolling = false;
+    private bool isBlocking;
+    private bool m_attack = false;
+    private int m_facingDirection = 1;
+    private int m_currentAttack = 1;// default weapon is weapon 1
+    private int jumpCount = 2;
+    private float m_timeSinceAttack = 0.0f;
+    private float m_delayToIdle = 0.0f;
+    private float m_attackGap = 0.75f;// weapon 1's attack gap
 
     private bool acidHurt;
     private bool gazeHurt;
@@ -327,7 +327,7 @@ public class HeroKnight : MonoBehaviour
             health -= 10;
             m_animator.SetTrigger("Hurt");
         }
-        
+
     }
 
     private void CheckAcidHurt()
@@ -336,7 +336,7 @@ public class HeroKnight : MonoBehaviour
         {
             health -= 1;
             m_animator.SetTrigger("Hurt");
-            
+
             acidHurt = false;
         }
     }
@@ -352,7 +352,7 @@ public class HeroKnight : MonoBehaviour
         {
             health -= 10;
             petrifyTimeLeft = petrifyTime;
-            
+
             gazeHurt = false;
         }
         else if (gazeHurt)
@@ -383,5 +383,13 @@ public class HeroKnight : MonoBehaviour
     {
         health -= amount;
         m_animator.SetTrigger("Hurt");
+    }
+
+    void OnTriggerEnter2D(Collider2D bol)
+    {
+        if (bol.tag == "tailHit")
+        {
+            PlayerDamage(10f);
+        }
     }
 }

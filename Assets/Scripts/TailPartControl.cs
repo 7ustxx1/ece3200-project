@@ -6,9 +6,6 @@ public class TailPartControl : MonoBehaviour
 {
     public bool canDoRight;
     public bool canDoLeft;
-    public Transform[] leftAtteckPosList;
-    public Transform[] rightAtteckPosList;
-    public float atteckRange;
     public bool isEnable;
     Animator animator;
     public float moveSpeed = 1f;
@@ -50,13 +47,14 @@ public class TailPartControl : MonoBehaviour
 
     public void MoveUp()
     {
-        isEnable = true;
+
         if (transform.position.y < 0.3)
         {
             transform.position += new Vector3(0, moveSpeed * Time.deltaTime, 0);
         }
         else
         {
+            isEnable = true;
             transform.GetComponentInParent<TailControl>().tailOneUp = true;
         }
     }
@@ -97,36 +95,29 @@ public class TailPartControl : MonoBehaviour
     public void atteckLeft()
     {
         animator.SetTrigger("doLeft");
-        Collider2D[] enemiseToDamage1;
-        Collider2D[] enemiseToDamage2;
-        enemiseToDamage1 = Physics2D.OverlapCircleAll(leftAtteckPosList[0].position, atteckRange, whatIsPlayer);
-        enemiseToDamage2 = Physics2D.OverlapCircleAll(leftAtteckPosList[1].position, atteckRange, whatIsPlayer);
-        for (int i = 0; i < enemiseToDamage1.Length; i++)
-        {
-            enemiseToDamage1[i].GetComponent<HeroKnight>().PlayerDamage(10f);
-        }
-        for (int i = 0; i < enemiseToDamage2.Length; i++)
-        {
-            enemiseToDamage2[i].GetComponent<HeroKnight>().PlayerDamage(10f);
-        }
     }
 
 
     public void atteckRight()
     {
         animator.SetTrigger("doRight");
-        Collider2D[] enemiseToDamage1;
-        Collider2D[] enemiseToDamage2;
-        enemiseToDamage1 = Physics2D.OverlapCircleAll(rightAtteckPosList[0].position, atteckRange, whatIsPlayer);
-        enemiseToDamage2 = Physics2D.OverlapCircleAll(rightAtteckPosList[1].position, atteckRange, whatIsPlayer);
-        for (int i = 0; i < enemiseToDamage1.Length; i++)
-        {
-            enemiseToDamage1[i].GetComponent<HeroKnight>().PlayerDamage(10f);
-        }
-        for (int i = 0; i < enemiseToDamage2.Length; i++)
-        {
-            enemiseToDamage2[i].GetComponent<HeroKnight>().PlayerDamage(10f);
-        }
+
     }
 
+    public void activateLeftTrigger()
+    {
+        transform.GetChild(0).GetComponent<Collider2D>().enabled = true;
+    }
+    public void activateRightTrigger()
+    {
+        transform.GetChild(1).GetComponent<Collider2D>().enabled = true;
+    }
+    public void deactivateLeftTrigger()
+    {
+        transform.GetChild(0).GetComponent<Collider2D>().enabled = false;
+    }
+    public void deactivateRightTrigger()
+    {
+        transform.GetChild(0).GetComponent<Collider2D>().enabled = false;
+    }
 }
