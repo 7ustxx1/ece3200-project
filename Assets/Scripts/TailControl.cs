@@ -41,7 +41,7 @@ public class TailControl : MonoBehaviour
             {
                 transform.GetChild(randomTail).GetComponent<TailPartControl>().MoveUp();
             }
-
+            transform.GetChild(randomTail).GetComponent<TailPartControl>().RandomAtteck();
             PlayerPrefs.SetFloat("enemyHP", HP);
 
             if (HP <= 0)
