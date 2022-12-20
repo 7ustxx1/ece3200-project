@@ -128,7 +128,7 @@ public class HeroKnight : MonoBehaviour
         //}
 
         // change weapon
-        else if (Input.GetKeyDown("1"))// weapon 1 ==> bolt
+        if (Input.GetKeyDown("1"))// weapon 1 ==> bolt
         {
             m_currentAttack = 1;
             m_attackGap = 0.75f;
