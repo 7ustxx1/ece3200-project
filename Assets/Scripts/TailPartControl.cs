@@ -34,10 +34,6 @@ public class TailPartControl : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-
-    }
 
     public void MoveDown()
     {
@@ -55,7 +51,7 @@ public class TailPartControl : MonoBehaviour
     public void MoveUp()
     {
         isEnable = true;
-        if (transform.position.y < -0.14)
+        if (transform.position.y < 0.3)
         {
             transform.position += new Vector3(0, moveSpeed * Time.deltaTime, 0);
         }
