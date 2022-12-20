@@ -18,6 +18,7 @@ public class TailControl : MonoBehaviour
     {
         randomTail = Random.Range(0, 3);
         PlayerPrefs.SetInt("CurrentTail", randomTail);
+        StartCoroutine("DoAtteck");
     }
 
 
@@ -42,7 +43,9 @@ public class TailControl : MonoBehaviour
             {
                 transform.GetChild(randomTail).GetComponent<TailPartControl>().MoveUp();
             }
-            transform.GetChild(randomTail).GetComponent<TailPartControl>().RandomAtteck();
+
+
+
             PlayerPrefs.SetFloat("enemyHP", HP);
 
             if (HP <= 0)
@@ -71,5 +74,17 @@ public class TailControl : MonoBehaviour
         HP -= amount;
     }
 
+    IEnumerator DoAtteck()
+    {
+        while (true)
+        {
+            if (enabled)
+            {
+                transform.GetChild(randomTail).GetComponent<TailPartControl>().RandomAtteck();
+            }
 
+            yield return new WaitForSeconds(5f);
+        }
+
+    }
 }
