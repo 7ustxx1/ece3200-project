@@ -13,6 +13,7 @@ TagManager:
   - Head
   - Body
   - Ground
+  - Acid
   layers:
   - Default
   - TransparentFX
