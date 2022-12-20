@@ -29,6 +29,10 @@ public class TailPartControl : MonoBehaviour
         {
             transform.position -= new Vector3(0, moveSpeed * Time.deltaTime, 0);
         }
+        else
+        {
+            transform.GetComponentInParent<TailControl>().tailOneDown = true;
+        }
     }
 
     public void MoveUp()
@@ -37,6 +41,10 @@ public class TailPartControl : MonoBehaviour
         if (transform.position.y < -0.14)
         {
             transform.position += new Vector3(0, moveSpeed * Time.deltaTime, 0);
+        }
+        else
+        {
+            transform.GetComponentInParent<TailControl>().tailOneUp = true;
         }
     }
 
@@ -76,12 +84,36 @@ public class TailPartControl : MonoBehaviour
     public void atteckLeft()
     {
         animator.SetTrigger("doLeft");
-
+        Collider2D[] enemiseToDamage1;
+        Collider2D[] enemiseToDamage2;
+        enemiseToDamage1 = Physics2D.OverlapCircleAll(leftAtteckPosList[0].position, atteckRange, whatIsPlayer);
+        enemiseToDamage2 = Physics2D.OverlapCircleAll(leftAtteckPosList[1].position, atteckRange, whatIsPlayer);
+        for (int i = 0; i < enemiseToDamage1.Length; i++)
+        {
+            enemiseToDamage1[i].GetComponent<HeroKnight>().PlayerDamage(10f);
+        }
+        for (int i = 0; i < enemiseToDamage2.Length; i++)
+        {
+            enemiseToDamage2[i].GetComponent<HeroKnight>().PlayerDamage(10f);
+        }
     }
+
 
     public void atteckRight()
     {
         animator.SetTrigger("doRight");
+        Collider2D[] enemiseToDamage1;
+        Collider2D[] enemiseToDamage2;
+        enemiseToDamage1 = Physics2D.OverlapCircleAll(rightAtteckPosList[0].position, atteckRange, whatIsPlayer);
+        enemiseToDamage2 = Physics2D.OverlapCircleAll(rightAtteckPosList[1].position, atteckRange, whatIsPlayer);
+        for (int i = 0; i < enemiseToDamage1.Length; i++)
+        {
+            enemiseToDamage1[i].GetComponent<HeroKnight>().PlayerDamage(10f);
+        }
+        for (int i = 0; i < enemiseToDamage2.Length; i++)
+        {
+            enemiseToDamage2[i].GetComponent<HeroKnight>().PlayerDamage(10f);
+        }
     }
 
 }
