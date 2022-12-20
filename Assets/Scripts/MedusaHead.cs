@@ -15,9 +15,10 @@ public class MedusaHead : MonoBehaviour
     {
         MedusaHeadAnimator = GetComponent<Animator>();
         Gaze();
+        PlayerPrefs.SetFloat("snakeDropSpeed", 1);
     }
 
-    
+
     void Update()
     {
         stateInfo = MedusaHeadAnimator.GetCurrentAnimatorStateInfo(0);
@@ -62,13 +63,14 @@ public class MedusaHead : MonoBehaviour
         Instantiate(dieEffectPrefab, transform.position, transform.rotation);
 
         Destroy(gameObject);
+        PlayerPrefs.SetInt("Stage4Flag", 1);
 
     }
 
     void Gaze()
     {
         MedusaHeadAnimator.SetInteger("Gaze", 1);
-        
+
     }
 
     void AcidRain()

@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemy
+  - small snake
+  - Bolt
+  - HealthSprite
+  - ManaSprite
+  - Tail
+  - Head
+  - Body
+  - Ground
   layers:
   - Default
   - TransparentFX

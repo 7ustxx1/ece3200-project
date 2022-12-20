@@ -10,15 +10,22 @@ public class Medusa : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        MoveIn();
     }
 
+    void MoveIn()
+    {
+        if (transform.position.x > 4.5)
+        {
+            transform.position -= new Vector3(2 * Time.deltaTime, 0, 0);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Bolt")
@@ -42,6 +49,8 @@ public class Medusa : MonoBehaviour
         Instantiate(dieEffectPrefab, transform.position, transform.rotation);
 
         Destroy(gameObject);
+
+        PlayerPrefs.SetInt("Stage4Flag", 1);
 
     }
 }
