@@ -40,6 +40,9 @@ public class HeroKnight : MonoBehaviour
     private float               m_attackGap = 0.75f;// weapon 1's attack gap
 
     private bool acidHurt;
+    private bool gazeHurt;
+    private float petrifyTime = 3f;
+    private float petrifyTimeLeft = 0f;
 
 
     // Use this for initialization
@@ -80,20 +83,20 @@ public class HeroKnight : MonoBehaviour
         float inputX = Input.GetAxis("Horizontal");
 
         // Swap direction of sprite depending on walk direction
-        if (inputX > 0 && !m_attack)
+        if (inputX > 0 && !m_attack && petrifyTimeLeft <= 0)
         {
             GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
         }
 
-        else if (inputX < 0 && !m_attack)
+        else if (inputX < 0 && !m_attack && petrifyTimeLeft <= 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
         }
 
         // Move
-        if (!m_rolling && !isBlocking && !m_attack)
+        if (!m_rolling && !isBlocking && !m_attack && petrifyTimeLeft <= 0)
             m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
 
         //Set AirSpeed in animator
@@ -106,26 +109,26 @@ public class HeroKnight : MonoBehaviour
             m_animator.SetBool("WallSlide", (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State()));
         }
 
-        //Death
-        if (Input.GetKeyDown("e") && !m_rolling)
-        {
-            m_animator.SetBool("noBlood", m_noBlood);
-            m_animator.SetTrigger("Death");
-        }
+        ////Death
+        //if (Input.GetKeyDown("e") && !m_rolling)
+        //{
+        //    m_animator.SetBool("noBlood", m_noBlood);
+        //    m_animator.SetTrigger("Death");
+        //}
 
-        //Hurt
-        else if (Input.GetKeyDown("q") && !m_rolling)
-        {
-            m_animator.SetTrigger("Hurt");
-            health -= 10;
-        }
-        else if (Input.GetKeyDown("r"))
-        {
-            health = 100;
-        }
+        ////Hurt
+        //else if (Input.GetKeyDown("q") && !m_rolling)
+        //{
+        //    m_animator.SetTrigger("Hurt");
+        //    health -= 10;
+        //}
+        //else if (Input.GetKeyDown("r"))
+        //{
+        //    health = 100;
+        //}
 
         // change weapon
-        else if (Input.GetKeyDown("1"))// weapon 1 ==> bolt
+        if (Input.GetKeyDown("1"))// weapon 1 ==> bolt
         {
             m_currentAttack = 1;
             m_attackGap = 0.75f;
@@ -188,7 +191,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && m_grounded)//???????
+        else if (Input.GetKeyDown("left shift") && !m_rolling && m_grounded && petrifyTimeLeft <= 0)
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
@@ -196,7 +199,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         //Jump
-        else if (Input.GetKeyDown("space") && !m_rolling && (m_grounded || jumpCount > 0) && !m_attack)
+        else if (Input.GetKeyDown("space") && !m_rolling && (m_grounded || jumpCount > 0) && !m_attack && petrifyTimeLeft <= 0)
         {
             m_animator.SetTrigger("Jump");
             m_grounded = false;
@@ -224,6 +227,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         CheckAcidHurt();
+        CheckGazedHurt();
     }
 
     // Animation Events
@@ -332,7 +336,7 @@ public class HeroKnight : MonoBehaviour
         {
             health -= 1;
             m_animator.SetTrigger("Hurt");
-            //Debug.Log("hurt");
+            
             acidHurt = false;
         }
     }
@@ -340,6 +344,28 @@ public class HeroKnight : MonoBehaviour
     void setacidHurt(bool hurt)
     {
         acidHurt = hurt;
+    }
+
+    private void CheckGazedHurt()
+    {
+        if (gazeHurt && !isBlocking && petrifyTimeLeft <= 0)
+        {
+            health -= 10;
+            petrifyTimeLeft = petrifyTime;
+            
+            gazeHurt = false;
+        }
+        if(petrifyTimeLeft > 0)
+        {
+            petrifyTimeLeft -= Time.deltaTime;
+            gazeHurt = false;
+            m_animator.SetTrigger("Hurt");
+        }
+    }
+
+    void setgazeHurt(bool hurt)
+    {
+        gazeHurt = hurt;
     }
 
     void OnDrawGizmosSelected()

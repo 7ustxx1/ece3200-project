@@ -18,6 +18,6 @@ public class EnemyHPBarControl : MonoBehaviour
     void Update()
     {
         Bar.Title = PlayerPrefs.GetString("barTitle");
-        Bar.BarValue = PlayerPrefs.GetInt("enemyHP");
+        Bar.BarValue = PlayerPrefs.GetFloat("enemyHP");
     }
 }
