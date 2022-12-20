@@ -4361,26 +4361,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 360128538}
     m_Modifications:
-    - target: {fileID: 5798422888077995856, guid: 1fe9cbe1ea743c64c883979e04787cc3,
-        type: 3}
-      propertyPath: m_Name
-      value: TailHitPoint1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
-        type: 3}
-      propertyPath: whatIsPlayer.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
-        type: 3}
-      propertyPath: canDoRight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
-        type: 3}
-      propertyPath: canDoLeft
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7678011549787347873, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: m_Name
@@ -4394,7 +4374,7 @@ PrefabInstance:
     - target: {fileID: 7678011549787347878, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.21
+      value: -4.19
       objectReference: {fileID: 0}
     - target: {fileID: 7678011549787347878, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
@@ -4441,11 +4421,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7678011549787347879, guid: 1fe9cbe1ea743c64c883979e04787cc3,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fe9cbe1ea743c64c883979e04787cc3, type: 3}
 --- !u!1001 &7678011549422266475
@@ -4455,6 +4430,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 360128538}
     m_Modifications:
+    - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
+        type: 3}
+      propertyPath: canDoLeft
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7678011549787347873, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: m_Name
