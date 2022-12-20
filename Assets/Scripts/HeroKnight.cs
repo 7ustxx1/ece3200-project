@@ -4,13 +4,16 @@ using System.Collections;
 public class HeroKnight : MonoBehaviour
 {
 
-    [SerializeField] float m_speed = 4.0f;
-    [SerializeField] float m_jumpForce = 5f;
-    [SerializeField] float m_rollForce = 6.0f;
-    [SerializeField] bool m_noBlood = false;
+    [SerializeField] float      m_speed = 4.0f;
+    [SerializeField] float      m_jumpForce = 5f;
+    [SerializeField] float      m_rollForce = 6.0f;
+    [SerializeField] bool       m_noBlood = false;
     [SerializeField] GameObject m_slideDust;
 
     public GameObject boltPrefab;
+    public GameObject waveformPrefab;
+    public GameObject crossedPrefab;
+
     public ProgressBar healthBar;
     public float health = 100;
     public Transform rightAtteckPos;
@@ -18,22 +21,24 @@ public class HeroKnight : MonoBehaviour
     public LayerMask whatIsEnemies;
     public float atteckRange;
 
-    private Animator m_animator;
-    private Rigidbody2D m_body2d;
-    private Sensor_HeroKnight m_groundSensor;
-    private Sensor_HeroKnight m_wallSensorR1;
-    private Sensor_HeroKnight m_wallSensorR2;
-    private Sensor_HeroKnight m_wallSensorL1;
-    private Sensor_HeroKnight m_wallSensorL2;
-    private bool m_grounded = false;
-    private bool m_rolling = false;
-    private int m_facingDirection = 1;
-    private int m_currentAttack = 0;
-    private float m_timeSinceAttack = 0.0f;
-    private float m_delayToIdle = 0.0f;
+    private Animator            m_animator;
+    private Rigidbody2D         m_body2d;
+    private Sensor_HeroKnight   m_groundSensor;
+    private Sensor_HeroKnight   m_wallSensorR1;
+    private Sensor_HeroKnight   m_wallSensorR2;
+    private Sensor_HeroKnight   m_wallSensorL1;
+    private Sensor_HeroKnight   m_wallSensorL2;
+    private bool                m_grounded = false;
+    private bool                m_rolling = false;
+    private bool                isBlocking;
+    private bool                m_attack = false;
+    private int                 m_facingDirection = 1;
+    private int                 m_currentAttack = 1;// default weapon is weapon 1
+    private int                 jumpCount = 2;
+    private float               m_timeSinceAttack = 0.0f;
+    private float               m_delayToIdle = 0.0f;
+    private float               m_attackGap = 0.75f;// weapon 1's attack gap
 
-    private bool isBlocking;
-    private int jumpCount = 2;
     private bool acidHurt;
     private bool gazeHurt;
 
@@ -76,20 +81,20 @@ public class HeroKnight : MonoBehaviour
         float inputX = Input.GetAxis("Horizontal");
 
         // Swap direction of sprite depending on walk direction
-        if (inputX > 0)
+        if (inputX > 0 && !m_attack)
         {
             GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
         }
 
-        else if (inputX < 0)
+        else if (inputX < 0 && !m_attack)
         {
             GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
         }
 
         // Move
-        if (!m_rolling && !isBlocking)
+        if (!m_rolling && !isBlocking && !m_attack)
             m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
 
         //Set AirSpeed in animator
@@ -97,7 +102,7 @@ public class HeroKnight : MonoBehaviour
 
         // -- Handle Animations --
         //Wall Slide
-        if (!m_rolling)
+        if (!m_rolling && !m_attack)
         {
             m_animator.SetBool("WallSlide", (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State()));
         }
@@ -120,21 +125,33 @@ public class HeroKnight : MonoBehaviour
             health = 100;
         }
 
-        //Attack
-        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
+        // change weapon
+        else if (Input.GetKeyDown("1"))// weapon 1 ==> bolt
         {
-            m_currentAttack++;
+            m_currentAttack = 1;
+            m_attackGap = 0.75f;
+        }
+        else if (Input.GetKeyDown("2"))// weapon 2 ==> waveform
+        {
+            m_currentAttack = 2;
+            m_attackGap = 0.5f;
+        }
+        else if (Input.GetKeyDown("3"))// weapon 3 ==> crossed
+        {
+            m_currentAttack = 3;
+            m_attackGap = 1f;
+        }
 
-            // Loop back to one after third attack
-            if (m_currentAttack > 3)
-                m_currentAttack = 1;
-
-            // Reset Attack combo if time since last attack is too large
-            if (m_timeSinceAttack > 1.0f)
-                m_currentAttack = 1;
+        //Attack
+        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > m_attackGap && !m_rolling &&
+                 !((m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State())))
+        {
+            // Change the stage to attack
+            m_attack = true;
 
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             m_animator.SetTrigger("Attack" + m_currentAttack);
+
             Collider2D[] enemiseToDamage;
             if (m_facingDirection == 1)
             {
@@ -152,9 +169,6 @@ public class HeroKnight : MonoBehaviour
                     enemiseToDamage[i].GetComponent<EnemyDamage>().TakeDamageNear();
                 }
             }
-
-
-
 
             // Reset timer
             m_timeSinceAttack = 0.0f;
@@ -183,7 +197,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         //Jump
-        else if (Input.GetKeyDown("space") && !m_rolling && (m_grounded || jumpCount > 0))
+        else if (Input.GetKeyDown("space") && !m_rolling && (m_grounded || jumpCount > 0) && !m_attack)
         {
             m_animator.SetTrigger("Jump");
             m_grounded = false;
@@ -221,6 +235,12 @@ public class HeroKnight : MonoBehaviour
         m_rolling = false;
     }
 
+    // Called in end of attack animation.
+    void AE_ResetAttack()
+    {
+        m_attack = false;
+    }
+
     // Called in slide animation.
     void AE_SlideDust()
     {
@@ -256,6 +276,41 @@ public class HeroKnight : MonoBehaviour
         // instantiate a bolt
         GameObject t_bolt = Instantiate(boltPrefab, t_spawn.position, t_spawn.rotation) as GameObject;
 
+    }
+    public void WaveformAttack()
+    {
+        // get the spawn position according to the facing direction
+        Transform t_spawn;
+        if (m_facingDirection == 1)
+        {
+            t_spawn = transform.Find("RightWaveformSpawnPos");
+        }
+        else
+        {
+            t_spawn = transform.Find("LeftWaveformSpawnPos");
+        }
+
+
+        // instantiate a bolt
+        GameObject t_bolt = Instantiate(waveformPrefab, t_spawn.position, t_spawn.rotation) as GameObject;
+    }
+
+    public void CrossedAttack()
+    {
+        // get the spawn position according to the facing direction
+        Transform t_spawn;
+        if (m_facingDirection == 1)
+        {
+            t_spawn = transform.Find("RightCrossedSpawnPos");
+        }
+        else
+        {
+            t_spawn = transform.Find("LeftCrossedSpawnPos");
+        }
+
+
+        // instantiate a bolt
+        GameObject t_bolt = Instantiate(crossedPrefab, t_spawn.position, t_spawn.rotation) as GameObject;
     }
 
     void OnCollisionEnter2D(Collision2D bol)
