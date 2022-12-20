@@ -7,10 +7,15 @@ public class Medusa : MonoBehaviour
     public float health;
     public GameObject dieEffectPrefab;
 
+    private Animator MedusaBodyAnimator;
+    private AnimatorStateInfo stateInfo;
+    private bool ableToAttack;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        MedusaBodyAnimator = GetComponent<Animator>();
+        ableToAttack = true;
     }
 
     // Update is called once per frame
@@ -21,6 +26,15 @@ public class Medusa : MonoBehaviour
             MoveIn();
         }
 
+        stateInfo = MedusaBodyAnimator.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.IsName("MedusaBodyGaze") && stateInfo.normalizedTime >= 1.0f)
+        {
+            MedusaBodyAnimator.SetInteger("Gaze", 0);
+        }
+        if (stateInfo.IsName("MedusaBodyHairAttack") && stateInfo.normalizedTime >= 1.0f)
+        {
+            MedusaBodyAnimator.SetInteger("HairAttack", 0);
+        }
     }
 
     void MoveIn()
@@ -56,5 +70,15 @@ public class Medusa : MonoBehaviour
 
         PlayerPrefs.SetInt("Stage4Flag", 1);
 
+    }
+
+    void Gaze()
+    {
+        MedusaBodyAnimator.SetInteger("Gaze", 1);
+    }
+
+    void HairAttack()
+    {
+        MedusaBodyAnimator.SetInteger("HairAttack", 1);
     }
 }
