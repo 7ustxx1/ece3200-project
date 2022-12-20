@@ -195,5 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91fa66e9b85477449ebe6def34dfb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  dieEffectPrefab: {fileID: 0}
+  health: 10
+  dieEffectPrefab: {fileID: 5515739279999250964, guid: bc4b9979b3b1b074d9d3f9d7470ce054,
+    type: 3}
