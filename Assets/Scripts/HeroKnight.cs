@@ -40,6 +40,7 @@ public class HeroKnight : MonoBehaviour
     private float               m_attackGap = 0.75f;// weapon 1's attack gap
 
     private bool acidHurt;
+    private bool gazeHurt;
 
 
     // Use this for initialization
@@ -224,6 +225,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         CheckAcidHurt();
+        CheckGazedHurt();
     }
 
     // Animation Events
@@ -332,7 +334,7 @@ public class HeroKnight : MonoBehaviour
         {
             health -= 1;
             m_animator.SetTrigger("Hurt");
-            //Debug.Log("hurt");
+            
             acidHurt = false;
         }
     }
@@ -340,6 +342,22 @@ public class HeroKnight : MonoBehaviour
     void setacidHurt(bool hurt)
     {
         acidHurt = hurt;
+    }
+
+    private void CheckGazedHurt()
+    {
+        if (gazeHurt && !isBlocking)
+        {
+            health -= 1;
+            m_animator.SetTrigger("Hurt");
+            
+            gazeHurt = false;
+        }
+    }
+
+    void setgazeHurt(bool hurt)
+    {
+        gazeHurt = hurt;
     }
 
     void OnDrawGizmosSelected()
