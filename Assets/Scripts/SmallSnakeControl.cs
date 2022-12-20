@@ -74,14 +74,10 @@ public class SmallSnakeControl : MonoBehaviour
     {
         animator.SetBool("isDead", true);
         moving = false;
-
-
         tag = "Dead";
-
-
     }
 
-    void Remove()
+    public void Remove()
     {
         Destroy(gameObject);
     }
