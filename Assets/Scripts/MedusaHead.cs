@@ -40,10 +40,10 @@ public class MedusaHead : MonoBehaviour
             }
             MoveIn();
             PlayerPrefs.SetFloat("enemyHP", health);
+            RandomAttack();
         }
 
         stateInfo = MedusaHeadAnimator.GetCurrentAnimatorStateInfo(0);
-        RandomAttack();
         if (stateInfo.IsName("MedusaHeadOpenEyes") && stateInfo.normalizedTime >= 1.0f)
         {
             MedusaHeadAnimator.SetInteger("Gaze", 2);
