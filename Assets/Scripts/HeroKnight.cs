@@ -43,6 +43,7 @@ public class HeroKnight : MonoBehaviour
     private bool gazeHurt;
     private float petrifyTime = 3f;
     private float petrifyTimeLeft = 0f;
+    private bool killed = false;
 
 
     // Use this for initialization
@@ -64,6 +65,7 @@ public class HeroKnight : MonoBehaviour
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
         healthBar.BarValue = health;
+
         //Check if character just landed on the ground
         if (!m_grounded && m_groundSensor.State())
         {
@@ -80,7 +82,10 @@ public class HeroKnight : MonoBehaviour
         }
 
         // -- Handle input and movement --
+
         float inputX = Input.GetAxis("Horizontal");
+
+
 
         // Swap direction of sprite depending on walk direction
         if (inputX > 0 && !m_attack && petrifyTimeLeft <= 0)
@@ -96,8 +101,12 @@ public class HeroKnight : MonoBehaviour
         }
 
         // Move
-        if (!m_rolling && !isBlocking && !m_attack && petrifyTimeLeft <= 0)
-            m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        if (!killed)
+        {
+            if (!m_rolling && !isBlocking && !m_attack && petrifyTimeLeft <= 0)
+                m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        }
+
 
         //Set AirSpeed in animator
         m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
@@ -110,11 +119,11 @@ public class HeroKnight : MonoBehaviour
         }
 
         ////Death
-        //if (Input.GetKeyDown("e") && !m_rolling)
-        //{
-        //    m_animator.SetBool("noBlood", m_noBlood);
-        //    m_animator.SetTrigger("Death");
-        //}
+        if (Input.GetKeyDown("e") && !m_rolling)
+        {
+            m_animator.SetBool("noBlood", m_noBlood);
+            m_animator.SetTrigger("Death");
+        }
 
         ////Hurt
         //else if (Input.GetKeyDown("q") && !m_rolling)
@@ -145,7 +154,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         //Attack
-        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > m_attackGap && !m_rolling &&
+        else if (!killed && Input.GetMouseButtonDown(0) && m_timeSinceAttack > m_attackGap && !m_rolling &&
                  !((m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State())))
         {
             // Change the stage to attack
@@ -177,7 +186,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         // Block
-        else if (Input.GetMouseButtonDown(1) && !m_rolling)
+        else if (Input.GetMouseButtonDown(1) && !m_rolling && !killed)
         {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
@@ -191,7 +200,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && m_grounded && petrifyTimeLeft <= 0)
+        else if (Input.GetKeyDown("left shift") && !m_rolling && m_grounded && petrifyTimeLeft <= 0 && !killed)
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
@@ -199,7 +208,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         //Jump
-        else if (Input.GetKeyDown("space") && !m_rolling && (m_grounded || jumpCount > 0) && !m_attack && petrifyTimeLeft <= 0)
+        else if (Input.GetKeyDown("space") && !m_rolling && (m_grounded || jumpCount > 0) && !m_attack && petrifyTimeLeft <= 0 && !killed)
         {
             m_animator.SetTrigger("Jump");
             m_grounded = false;
@@ -210,7 +219,7 @@ public class HeroKnight : MonoBehaviour
         }
 
         //Run
-        else if (Mathf.Abs(inputX) > Mathf.Epsilon)
+        else if (Mathf.Abs(inputX) > Mathf.Epsilon && !killed)
         {
             // Reset timer
             m_delayToIdle = 0.05f;
@@ -224,6 +233,17 @@ public class HeroKnight : MonoBehaviour
             m_delayToIdle -= Time.deltaTime;
             if (m_delayToIdle < 0)
                 m_animator.SetInteger("AnimState", 0);
+        }
+
+        if (health <= 0 && !m_rolling)
+        {
+            if (!killed)
+            {
+                m_animator.SetBool("noBlood", m_noBlood);
+                m_animator.SetTrigger("Death");
+                killed = true;
+            }
+
         }
 
         CheckAcidHurt();
