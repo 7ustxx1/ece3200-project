@@ -31,6 +31,7 @@ public class TailControl : MonoBehaviour
     void Die()
     {
         PlayerPrefs.SetInt("Stage2Flag", 1);
+        GetComponentInChildren<TailPartControl>().MoveDown();
         Destroy(gameObject);
     }
 
