@@ -808,7 +808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381875146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.438, y: -3.2, z: 0}
+  m_LocalPosition: {x: -0.438, y: -3.78, z: 0}
   m_LocalScale: {x: 6.498476, y: 6.498476, z: 6.498476}
   m_Children:
   - {fileID: 192852306}
@@ -9291,7 +9291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946508451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.92, y: 3.33, z: 0}
+  m_LocalPosition: {x: -7.92, y: 4.19, z: 0}
   m_LocalScale: {x: 1.4688, y: 1.4688, z: 1.4688}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9427,7 +9427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052084490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.79, y: 0.14, z: 0}
+  m_LocalPosition: {x: -7.79, y: 7.6, z: 0}
   m_LocalScale: {x: 1.6073, y: 1.6073, z: 1.6073}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9554,10 +9554,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3030487688211583234, guid: 590078de30e04114488eccb0b1b4a7b6,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.12554824
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030487688211583234, guid: 590078de30e04114488eccb0b1b4a7b6,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.2989035
+      objectReference: {fileID: 0}
     - target: {fileID: 3030487688211583235, guid: 590078de30e04114488eccb0b1b4a7b6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.94
+      value: 6.98
       objectReference: {fileID: 0}
     - target: {fileID: 3030487688211583235, guid: 590078de30e04114488eccb0b1b4a7b6,
         type: 3}
@@ -9614,7 +9624,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MedusaBody
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3030487688211583237, guid: 590078de30e04114488eccb0b1b4a7b6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 590078de30e04114488eccb0b1b4a7b6, type: 3}
 --- !u!1001 &4981956128043118536
 PrefabInstance:
