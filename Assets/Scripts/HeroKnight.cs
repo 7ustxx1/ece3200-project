@@ -348,14 +348,18 @@ public class HeroKnight : MonoBehaviour
 
     private void CheckGazedHurt()
     {
-        if (gazeHurt && !isBlocking && petrifyTimeLeft <= 0)
+        if (gazeHurt && !isBlocking && petrifyTimeLeft <= 0 && m_facingDirection == 1)
         {
             health -= 10;
             petrifyTimeLeft = petrifyTime;
             
             gazeHurt = false;
         }
-        if(petrifyTimeLeft > 0)
+        else if (gazeHurt)
+        {
+            gazeHurt = false;
+        }
+        if (petrifyTimeLeft > 0)
         {
             petrifyTimeLeft -= Time.deltaTime;
             gazeHurt = false;

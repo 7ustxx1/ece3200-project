@@ -36,6 +36,7 @@ public class MedusaHead : MonoBehaviour
             {
                 PlayerPrefs.SetString("barTitle", "Head Health");
                 PlayerPrefs.SetFloat("enemyHP", health);
+                health = 100;
                 healthSet = true;
             }
             MoveIn();
@@ -80,9 +81,18 @@ public class MedusaHead : MonoBehaviour
     {
         if (collision.tag == "Bolt")
         {
-            TakeDamage(1f);
+            TakeDamage(5f);
+        }
+        else if (collision.tag == "Waveform")
+        {
+            TakeDamage(2f);
+        }
+        else if (collision.tag == "Crossed")
+        {
+            TakeDamage(8f);
         }
     }
+
 
     void MoveIn()
     {
