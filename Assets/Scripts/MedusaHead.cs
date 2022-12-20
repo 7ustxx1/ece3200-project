@@ -5,7 +5,7 @@ using UnityEngine;
 public class MedusaHead : MonoBehaviour
 {
 
-    public float health;
+    public float health = 100f;
     public GameObject dieEffectPrefab;
     public GameObject AcidEffect;
     public GameObject GazeEffect;
@@ -16,6 +16,8 @@ public class MedusaHead : MonoBehaviour
     private float attackInterval = 5f;
     private float attackCooldown = 5f;
     private int randomIndex;
+    private bool healthSet = false;
+
 
     void Start()
     {
@@ -28,6 +30,18 @@ public class MedusaHead : MonoBehaviour
 
     void Update()
     {
+        if (PlayerPrefs.GetInt("Stage3Flag") == 1)
+        {
+            if (!healthSet)
+            {
+                PlayerPrefs.SetString("barTitle", "Head Health");
+                PlayerPrefs.SetFloat("enemyHP", health);
+                healthSet = true;
+            }
+            MoveIn();
+            PlayerPrefs.SetFloat("enemyHP", health);
+        }
+
         stateInfo = MedusaHeadAnimator.GetCurrentAnimatorStateInfo(0);
         RandomAttack();
         if (stateInfo.IsName("MedusaHeadOpenEyes") && stateInfo.normalizedTime >= 1.0f)
@@ -67,6 +81,14 @@ public class MedusaHead : MonoBehaviour
         if (collision.tag == "Bolt")
         {
             TakeDamage(1f);
+        }
+    }
+
+    void MoveIn()
+    {
+        if (transform.position.x > 4.5)
+        {
+            transform.position -= new Vector3(2 * Time.deltaTime, 0, 0);
         }
     }
 
