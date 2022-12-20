@@ -339,12 +339,12 @@ public class HeroKnight : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D bol)
     {
-        if (bol.gameObject.tag == "small snake" && !isBlocking)
+        if (bol.gameObject.tag == "small snake" && !isBlocking && !m_rolling)
         {
             health -= 1;
             m_animator.SetTrigger("Hurt");
         }
-        if (bol.gameObject.tag == "Tail")
+        if (bol.gameObject.tag == "Tail" && !m_rolling)
         {
             health -= 10;
             m_animator.SetTrigger("Hurt");
@@ -354,7 +354,7 @@ public class HeroKnight : MonoBehaviour
 
     private void CheckAcidHurt()
     {
-        if (acidHurt)
+        if (acidHurt && !m_rolling)
         {
             health -= 1;
             m_animator.SetTrigger("Hurt");
@@ -370,7 +370,7 @@ public class HeroKnight : MonoBehaviour
 
     private void CheckGazedHurt()
     {
-        if (gazeHurt && !isBlocking && petrifyTimeLeft <= 0 && m_facingDirection == 1)
+        if (gazeHurt && !isBlocking && petrifyTimeLeft <= 0 && m_facingDirection == 1 && !m_rolling)
         {
             health -= 10;
             petrifyTimeLeft = petrifyTime;
@@ -409,7 +409,7 @@ public class HeroKnight : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D bol)
     {
-        if (bol.tag == "tailHit")
+        if (bol.tag == "tailHit" && !m_rolling)
         {
             PlayerDamage(10f);
         }
