@@ -13,6 +13,10 @@ public class HeroKnight : MonoBehaviour
     public GameObject boltPrefab;
     public ProgressBar healthBar;
     public float health = 100;
+    public Transform rightAtteckPos;
+    public Transform leftAtteckPos;
+    public LayerMask whatIsEnemies;
+    public float atteckRange;
 
     private Animator m_animator;
     private Rigidbody2D m_body2d;
@@ -129,6 +133,26 @@ public class HeroKnight : MonoBehaviour
 
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             m_animator.SetTrigger("Attack" + m_currentAttack);
+            Collider2D[] enemiseToDamage;
+            if (m_facingDirection == 1)
+            {
+                enemiseToDamage = Physics2D.OverlapCircleAll(rightAtteckPos.position, atteckRange, whatIsEnemies);
+                for (int i = 0; i < enemiseToDamage.Length; i++)
+                {
+                    enemiseToDamage[i].GetComponent<EnemyDamage>().TakeDamageNear();
+                }
+            }
+            else if ((m_facingDirection == -1))
+            {
+                enemiseToDamage = Physics2D.OverlapCircleAll(leftAtteckPos.position, atteckRange, whatIsEnemies);
+                for (int i = 0; i < enemiseToDamage.Length; i++)
+                {
+                    enemiseToDamage[i].GetComponent<EnemyDamage>().TakeDamageNear();
+                }
+            }
+
+
+
 
             // Reset timer
             m_timeSinceAttack = 0.0f;
@@ -242,4 +266,10 @@ public class HeroKnight : MonoBehaviour
             m_animator.SetTrigger("Hurt");
         }
     }
+
+    // void OnDrawGizmosSelected()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireSphere(atteckPos.position, atteckRange);
+    // }
 }

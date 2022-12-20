@@ -8,7 +8,7 @@ public class TailControl : MonoBehaviour
 
     public float moveSpeed = 1f;
     public float HP = 100;
-    public GameObject waypoints;
+
 
     // Update is called once per frame
     void Update()
@@ -16,7 +16,6 @@ public class TailControl : MonoBehaviour
         if (PlayerPrefs.GetInt("Stage2Flag") == 1)
         {
             MoveUp();
-            PlayerPrefs.SetString("barTitle", "Tail Health");
 
             if (HP == 0)
             {
@@ -26,7 +25,7 @@ public class TailControl : MonoBehaviour
 
     }
 
-    void MoveDown()
+    void MoveDown(GameObject tail)
     {
         if (transform.position.y >= -3.2)
         {
@@ -42,11 +41,7 @@ public class TailControl : MonoBehaviour
         }
     }
 
-    void moveToPoint(int pointIndex)
-    {
-        Vector3 movetowards = Vector3.MoveTowards(transform.position, waypoints.transform.GetChild(pointIndex).position, Time.deltaTime * 20);
-        transform.position = movetowards;
-    }
+
 
     void Die()
     {
@@ -54,16 +49,11 @@ public class TailControl : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void takeDamage(float amount)
+    public void takeDamage(float amount)
     {
+        Debug.Log("HIT");
         HP -= amount;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Bolt")
-        {
-            takeDamage(10);
-        }
-    }
+
 }
