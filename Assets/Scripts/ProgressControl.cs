@@ -18,12 +18,12 @@ public class ProgressControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        updateBar();
     }
 
     void updateBar()
     {
-        Bar.BarValue = (PlayerPrefs.GetInt("Stage1Flag") + PlayerPrefs.GetInt("Stage2Flag") +
-                        PlayerPrefs.GetInt("Stage3Flag") + PlayerPrefs.GetInt("Stage4Flag")) * 25;
+        Bar.BarValue = (float)(PlayerPrefs.GetInt("Stage1Flag") + PlayerPrefs.GetInt("Stage2Flag") +
+                        PlayerPrefs.GetInt("Stage3Flag") + PlayerPrefs.GetInt("Stage4Flag")) * 25f;
     }
 }

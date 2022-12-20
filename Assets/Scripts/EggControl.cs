@@ -5,19 +5,23 @@ using UnityEngine;
 
 public class EggControl : MonoBehaviour
 {
-    private float HP = 100;
+    private float HP = 100f;
     Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-
+        PlayerPrefs.SetString("barTitle", "Egg Health");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Die();
+        PlayerPrefs.SetFloat("enemyHP", HP);
+        if (HP <= 0)
+        {
+            Die();
+        }
     }
 
     void Die()
@@ -27,7 +31,13 @@ public class EggControl : MonoBehaviour
 
     public void Remove()
     {
-        Debug.Log("Destory");
+        PlayerPrefs.SetInt("Stage1Flag", 1);
         Destroy(gameObject);
+
+    }
+
+    public void TakeDamage(float amount)
+    {
+        HP -= amount;
     }
 }
