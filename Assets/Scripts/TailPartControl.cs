@@ -79,7 +79,6 @@ public class TailPartControl : MonoBehaviour
         {
             randomIndex = Random.Range(0, 3);
         }
-        Debug.Log(randomIndex);
         if (randomIndex == 0)
         {
             atteckLeft();

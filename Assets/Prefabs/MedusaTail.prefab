@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3930879219717414247}
   - component: {fileID: 2124760721}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: RightAtteckPos
   m_TagString: tailHit
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2912846943851607810}
   - component: {fileID: 431671969}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: leftAtteckPos
   m_TagString: tailHit
   m_Icon: {fileID: 0}

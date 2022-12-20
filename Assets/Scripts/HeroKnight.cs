@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class HeroKnight : MonoBehaviour
@@ -234,7 +235,7 @@ public class HeroKnight : MonoBehaviour
             if (m_delayToIdle < 0)
                 m_animator.SetInteger("AnimState", 0);
         }
-
+        // Die
         if (health <= 0 && !m_rolling)
         {
             if (!killed)
@@ -242,6 +243,7 @@ public class HeroKnight : MonoBehaviour
                 m_animator.SetBool("noBlood", m_noBlood);
                 m_animator.SetTrigger("Death");
                 killed = true;
+                SceneManager.LoadScene(3);
             }
 
         }

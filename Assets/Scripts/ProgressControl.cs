@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class ProgressControl : MonoBehaviour
@@ -19,6 +20,11 @@ public class ProgressControl : MonoBehaviour
     void Update()
     {
         updateBar();
+
+        if (Bar.BarValue == 100)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     void updateBar()
