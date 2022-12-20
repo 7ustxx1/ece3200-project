@@ -118,6 +118,6 @@ public class TailPartControl : MonoBehaviour
     }
     public void deactivateRightTrigger()
     {
-        transform.GetChild(0).GetComponent<Collider2D>().enabled = false;
+        transform.GetChild(1).GetComponent<Collider2D>().enabled = false;
     }
 }
