@@ -56,7 +56,15 @@ public class Medusa : MonoBehaviour
     {
         if (collision.tag == "Bolt")
         {
-            TakeDamage(1f);
+            TakeDamage(5f);
+        }
+        else if (collision.tag == "Waveform")
+        {
+            TakeDamage(2f);
+        }
+        else if (collision.tag == "Crossed")
+        {
+            TakeDamage(8f);
         }
     }
 

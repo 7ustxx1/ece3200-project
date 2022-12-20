@@ -19,13 +19,37 @@ public class Waveform : MonoBehaviour
 
 
     private float lifeTime = 3f;
+    private int currentStage = 1;
 
     void Start()
     {
+        CheckCurrentStage();
         //将炮弹的本地坐标速度转换为世界坐标
         speed = transform.TransformDirection(speed);
-
-        target = GameObject.Find("HitPoint").GetComponent<Transform>();
+        if (currentStage == 1)
+        {
+            target = GameObject.Find("EggHitPoint").GetComponent<Transform>();
+        }
+        else if (currentStage == 2)
+        {
+            int currentTail = PlayerPrefs.GetInt("CurrentTail");
+            if (currentTail == 0)
+            {
+                target = GameObject.Find("TailHitPoint1").GetComponent<Transform>();
+            }
+            else if (currentTail == 1)
+            {
+                target = GameObject.Find("TailHitPoint2").GetComponent<Transform>();
+            }
+            else if (currentTail == 2)
+            {
+                target = GameObject.Find("TailHitPoint2").GetComponent<Transform>();
+            }
+        }
+        else if (currentStage == 3)
+        {
+            target = GameObject.Find("MedusaHitPoint").GetComponent<Transform>();
+        }
     }
 
     void Update()
@@ -43,11 +67,26 @@ public class Waveform : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy" || other.tag == "Body")
+        if (other.tag == "enemy" || other.tag == "Body" || other.tag == "Tail")
         {
             t_hit = Instantiate<GameObject>(waveformHitPrefab, transform.position, transform.rotation) as GameObject;
 
             Destroy(gameObject);
+        }
+    }
+
+    private void CheckCurrentStage()
+    {
+        for (int i = 1; i < 5; i++)
+        {
+            string stage_name = "Stage" + i + "Flag";
+            int t_stage;
+            t_stage = PlayerPrefs.GetInt(stage_name);
+            if (t_stage == 0)
+            {
+                currentStage = i;
+                break;
+            }
         }
     }
 

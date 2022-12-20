@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6838969988348644448}
   m_Layer: 9
-  m_Name: HitPoint
+  m_Name: MedusaHitPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

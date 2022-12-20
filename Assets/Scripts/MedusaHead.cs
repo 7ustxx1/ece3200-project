@@ -13,6 +13,9 @@ public class MedusaHead : MonoBehaviour
     private Animator MedusaHeadAnimator;
     private AnimatorStateInfo stateInfo;
     private bool ableToAttack;
+    private float attackInterval = 5f;
+    private float attackCooldown = 5f;
+    private int randomIndex;
 
     void Start()
     {
@@ -26,6 +29,7 @@ public class MedusaHead : MonoBehaviour
     void Update()
     {
         stateInfo = MedusaHeadAnimator.GetCurrentAnimatorStateInfo(0);
+        RandomAttack();
         if (stateInfo.IsName("MedusaHeadOpenEyes") && stateInfo.normalizedTime >= 1.0f)
         {
             MedusaHeadAnimator.SetInteger("Gaze", 2);
@@ -94,5 +98,26 @@ public class MedusaHead : MonoBehaviour
     void AcidRain()
     {
         MedusaHeadAnimator.SetInteger("AcidRain", 1);
+    }
+
+    void RandomAttack()
+    {
+        if (attackCooldown > 0)
+        {
+            attackCooldown -= Time.deltaTime;
+        }
+        if (attackCooldown <= 0)
+        {
+            randomIndex = Random.Range(0, 2);
+            if(randomIndex == 0)
+            {
+                Gaze();
+            }
+            if(randomIndex == 1)
+            {
+                AcidRain();
+            }
+            attackCooldown = attackInterval;
+        }
     }
 }

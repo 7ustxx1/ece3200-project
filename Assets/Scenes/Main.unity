@@ -3858,7 +3858,7 @@ PrefabInstance:
     - target: {fileID: 7678011549787347878, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.437561
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7678011549787347878, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
@@ -3899,6 +3899,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678011549787347879, guid: 1fe9cbe1ea743c64c883979e04787cc3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fe9cbe1ea743c64c883979e04787cc3, type: 3}
@@ -4343,6 +4348,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 360128538}
     m_Modifications:
+    - target: {fileID: 5798422888077995856, guid: 1fe9cbe1ea743c64c883979e04787cc3,
+        type: 3}
+      propertyPath: m_Name
+      value: TailHitPoint1
+      objectReference: {fileID: 0}
     - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: whatIsPlayer.m_Bits
@@ -4376,7 +4386,7 @@ PrefabInstance:
     - target: {fileID: 7678011549787347878, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.875122
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7678011549787347878, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
@@ -4418,6 +4428,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7678011549787347879, guid: 1fe9cbe1ea743c64c883979e04787cc3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fe9cbe1ea743c64c883979e04787cc3, type: 3}
 --- !u!1001 &7678011549422266475
@@ -4427,6 +4442,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 360128538}
     m_Modifications:
+    - target: {fileID: 5798422888077995856, guid: 1fe9cbe1ea743c64c883979e04787cc3,
+        type: 3}
+      propertyPath: m_Name
+      value: TailHitPoint2
+      objectReference: {fileID: 0}
     - target: {fileID: 5931937244398740179, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: whatIsPlayer.m_Bits
@@ -4455,7 +4475,7 @@ PrefabInstance:
     - target: {fileID: 7678011549787347878, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.437561
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7678011549787347878, guid: 1fe9cbe1ea743c64c883979e04787cc3,
         type: 3}
@@ -4496,6 +4516,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678011549787347879, guid: 1fe9cbe1ea743c64c883979e04787cc3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fe9cbe1ea743c64c883979e04787cc3, type: 3}

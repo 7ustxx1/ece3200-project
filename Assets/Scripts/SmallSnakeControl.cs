@@ -33,11 +33,6 @@ public class SmallSnakeControl : MonoBehaviour
                 moveRight();
             }
         }
-
-
-
-
-
     }
 
     void moveLeft()
@@ -59,7 +54,6 @@ public class SmallSnakeControl : MonoBehaviour
         {
             moveLeftFlag = !moveLeftFlag;
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
