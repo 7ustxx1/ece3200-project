@@ -14,6 +14,10 @@ public class TailPartControl : MonoBehaviour
     public float moveSpeed = 1f;
     public LayerMask whatIsPlayer;
 
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Bolt" && isEnable)
@@ -96,7 +100,7 @@ public class TailPartControl : MonoBehaviour
 
     public void atteckLeft()
     {
-        animator.SetTrigger("doLeft");
+        animator.SetBool("doLeft", true);
         Collider2D[] enemiseToDamage1;
         Collider2D[] enemiseToDamage2;
         enemiseToDamage1 = Physics2D.OverlapCircleAll(leftAtteckPosList[0].position, atteckRange, whatIsPlayer);
@@ -114,7 +118,7 @@ public class TailPartControl : MonoBehaviour
 
     public void atteckRight()
     {
-        animator.SetTrigger("doRight");
+        animator.SetBool("doRight", true);
         Collider2D[] enemiseToDamage1;
         Collider2D[] enemiseToDamage2;
         enemiseToDamage1 = Physics2D.OverlapCircleAll(rightAtteckPosList[0].position, atteckRange, whatIsPlayer);
