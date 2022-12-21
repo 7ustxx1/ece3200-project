@@ -346,21 +346,22 @@ public class HeroKnight : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D bol)
     {
-        if (bol.gameObject.tag == "small snake" && !isBlocking && !m_rolling/* && hurtCooldown <= 0*/)
+        Vector3 bolPosition = bol.transform.position;
+        if (bol.gameObject.tag == "small snake" && !(isBlocking && ((bolPosition.x - transform.position.x)* m_facingDirection >= 0)) && !m_rolling/* && hurtCooldown <= 0*/)
         {
             health -= 1;
             m_animator.SetTrigger("Hurt");
             m_attack = false;
             //hurtCooldown = hurtInterval;
         }
-        if (bol.gameObject.tag == "Tail" && !m_rolling/* && hurtCooldown <= 0*/)
+        if (bol.gameObject.tag == "Tail" && !(isBlocking && ((bolPosition.x - transform.position.x) * m_facingDirection >= 0)) && !m_rolling/* && hurtCooldown <= 0*/)
         {
             health -= 10;
             m_animator.SetTrigger("Hurt");
             m_attack = false;
             //hurtCooldown = hurtInterval;
         }
-        if (bol.gameObject.tag == "Body" && !m_rolling && !(isBlocking && m_facingDirection == 1)/* && hurtCooldown <= 0*/)
+        if (bol.gameObject.tag == "Body" && !m_rolling && !(isBlocking && ((bolPosition.x - transform.position.x) * m_facingDirection >= 0))/* && hurtCooldown <= 0*/)
         {
             health -= 10;
             m_animator.SetTrigger("Hurt");
@@ -427,7 +428,14 @@ public class HeroKnight : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D bol)
     {
-        if (bol.tag == "tailHit" && !m_rolling)
+        Vector3 bolPosition = bol.transform.position;
+        if (bol.tag == "tailHit" && !m_rolling && !(isBlocking && ((bolPosition.x - transform.position.x) * m_facingDirection >= 0)))
+        {
+            Debug.Log("tail Hit");
+            PlayerDamage(10f);
+        }
+        
+        if (bol.tag == "bodyHit" && !m_rolling && !(isBlocking && ((bolPosition.x - transform.position.x) * m_facingDirection >= 0)))
         {
             PlayerDamage(10f);
         }

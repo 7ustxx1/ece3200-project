@@ -18,6 +18,7 @@ TagManager:
   - Crossed
   - Waveform
   - tailHit
+  - bodyHit
   layers:
   - Default
   - TransparentFX
