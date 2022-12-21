@@ -34,6 +34,8 @@ public class MedusaHead : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Stage3Flag") == 1)
         {
+            PlayerPrefs.SetInt("SnakeEnable", 1);
+            PlayerPrefs.SetFloat("snakeDropSpeed", 8);
             if (!healthSet)
             {
                 PlayerPrefs.SetString("barTitle", "Head Health");
@@ -98,7 +100,7 @@ public class MedusaHead : MonoBehaviour
 
     void MoveIn()
     {
-        if (transform.position.x > 4.5)
+        if (transform.position.x > 4)
         {
             transform.position -= new Vector3(2 * Time.deltaTime, 0, 0);
         }
