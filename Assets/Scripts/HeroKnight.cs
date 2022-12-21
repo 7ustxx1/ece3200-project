@@ -45,6 +45,8 @@ public class HeroKnight : MonoBehaviour
     private float petrifyTime = 3f;
     private float petrifyTimeLeft = 0f;
     private bool killed = false;
+    private float hurtInterval = 1f;
+    private float hurtCooldown;
 
 
     // Use this for initialization
@@ -66,6 +68,11 @@ public class HeroKnight : MonoBehaviour
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
         healthBar.BarValue = health;
+
+        if(hurtCooldown > 0)
+        {
+            hurtCooldown -= Time.deltaTime;
+        }
 
         //Check if character just landed on the ground
         if (!m_grounded && m_groundSensor.State())
@@ -120,11 +127,11 @@ public class HeroKnight : MonoBehaviour
         }
 
         ////Death
-        if (Input.GetKeyDown("e") && !m_rolling)
-        {
-            m_animator.SetBool("noBlood", m_noBlood);
-            m_animator.SetTrigger("Death");
-        }
+        //if (Input.GetKeyDown("e") && !m_rolling)
+        //{
+        //    m_animator.SetBool("noBlood", m_noBlood);
+        //    m_animator.SetTrigger("Death");
+        //}
 
         ////Hurt
         //else if (Input.GetKeyDown("q") && !m_rolling)
@@ -339,15 +346,26 @@ public class HeroKnight : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D bol)
     {
-        if (bol.gameObject.tag == "small snake" && !isBlocking && !m_rolling)
+        if (bol.gameObject.tag == "small snake" && !isBlocking && !m_rolling/* && hurtCooldown <= 0*/)
         {
             health -= 1;
             m_animator.SetTrigger("Hurt");
+            m_attack = false;
+            //hurtCooldown = hurtInterval;
         }
-        if (bol.gameObject.tag == "Tail" && !m_rolling)
+        if (bol.gameObject.tag == "Tail" && !m_rolling/* && hurtCooldown <= 0*/)
         {
             health -= 10;
             m_animator.SetTrigger("Hurt");
+            m_attack = false;
+            //hurtCooldown = hurtInterval;
+        }
+        if (bol.gameObject.tag == "Body" && !m_rolling && !(isBlocking && m_facingDirection == 1)/* && hurtCooldown <= 0*/)
+        {
+            health -= 10;
+            m_animator.SetTrigger("Hurt");
+            m_attack = false;
+            //hurtCooldown = hurtInterval;
         }
 
     }
