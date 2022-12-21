@@ -429,15 +429,18 @@ public class HeroKnight : MonoBehaviour
     void OnTriggerEnter2D(Collider2D bol)
     {
         Vector3 bolPosition = bol.transform.position;
-        if (bol.tag == "tailHit" && !m_rolling && !(isBlocking && ((bolPosition.x - transform.position.x) * m_facingDirection >= 0)))
+        if (bol.tag == "tailHit" && !m_rolling && !(isBlocking && ((bolPosition.x - transform.position.x) * m_facingDirection >= 0)) && hurtCooldown <= 0)
         {
-            Debug.Log("tail Hit");
             PlayerDamage(10f);
+            m_attack = false;
+            hurtCooldown = hurtInterval;
         }
         
-        if (bol.tag == "bodyHit" && !m_rolling && !(isBlocking && ((bolPosition.x - transform.position.x) * m_facingDirection >= 0)))
+        if (bol.tag == "bodyHit" && !m_rolling && !(isBlocking && ((bolPosition.x - transform.position.x) * m_facingDirection >= 0)) && hurtCooldown <= 0)
         {
             PlayerDamage(10f);
+            m_attack = false;
+            hurtCooldown = hurtInterval;
         }
     }
 }
