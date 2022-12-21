@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7023685456434548555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.9, y: 2.26, z: 1.9729747}
-  m_LocalScale: {x: 0.74930316, y: 0.74930316, z: 0.74930316}
+  m_LocalScale: {x: 1.5419627, y: 1.5419627, z: 1.5419627}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 0.3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -667,7 +667,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 180}
+    m_Rotation: {x: 0, y: 0, z: 160}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -804,7 +804,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 60
+      value: 100
       mode: 0
       spread: 0
       speed:
@@ -866,7 +866,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10000
+      scalar: 50000
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -3733,7 +3733,7 @@ ParticleSystem:
     radiusScale: 0.4
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 3072
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

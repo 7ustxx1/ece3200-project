@@ -1530,7 +1530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 825573936}
   - component: {fileID: 825573937}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WallCollider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2352,7 +2352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1169542657}
   - component: {fileID: 1169542658}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TopColloder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2637,7 +2637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1315516216}
   - component: {fileID: 1315516217}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GroundCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2805,7 +2805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1384924521}
   - component: {fileID: 1384924522}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WallCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4048,6 +4048,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3030487688211583234, guid: 590078de30e04114488eccb0b1b4a7b6,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030487688211583234, guid: 590078de30e04114488eccb0b1b4a7b6,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030487688211583234, guid: 590078de30e04114488eccb0b1b4a7b6,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.9
+      objectReference: {fileID: 0}
     - target: {fileID: 3030487688211583235, guid: 590078de30e04114488eccb0b1b4a7b6,
         type: 3}
       propertyPath: m_LocalPosition.x

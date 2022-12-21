@@ -6,6 +6,8 @@ public class Medusa : MonoBehaviour
 {
     public float health;
     public GameObject dieEffectPrefab;
+    public GameObject GazeBornPos; 
+    public GameObject GazeEffect;
 
     private Animator MedusaBodyAnimator;
     private AnimatorStateInfo stateInfo;
@@ -100,6 +102,12 @@ public class Medusa : MonoBehaviour
         MedusaBodyAnimator.SetInteger("Gaze", 1);
     }
 
+    void GazeGenerate()
+    {
+        GameObject effectIns = (GameObject)Instantiate(GazeEffect, GazeBornPos.transform.position, transform.rotation);
+        Destroy(effectIns, 5f);
+    }
+
     void HairAttack()
     {
         MedusaBodyAnimator.SetInteger("HairAttack", 1);
@@ -124,5 +132,14 @@ public class Medusa : MonoBehaviour
             }
             attackCooldown = attackInterval;
         }
+    }
+
+    public void activateHairAttackTrigger()
+    {
+        transform.GetChild(2).GetComponent<Collider2D>().enabled = true;
+    }
+    public void deactivateHairAttackTrigger()
+    {
+        transform.GetChild(2).GetComponent<Collider2D>().enabled = false;
     }
 }
