@@ -429,6 +429,7 @@ public class HeroKnight : MonoBehaviour
     void OnTriggerEnter2D(Collider2D bol)
     {
         Vector3 bolPosition = bol.transform.position;
+        Debug.Log(bolPosition.x);
         if (bol.tag == "tailHit" && !m_rolling && !(isBlocking && ((bolPosition.x - transform.position.x) * m_facingDirection >= 0)) && hurtCooldown <= 0)
         {
             PlayerDamage(10f);
