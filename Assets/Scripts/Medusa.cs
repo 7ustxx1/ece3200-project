@@ -11,6 +11,9 @@ public class Medusa : MonoBehaviour
     private AnimatorStateInfo stateInfo;
     private bool ableToAttack;
     private bool healthSet = false;
+    private float attackInterval = 5f;
+    private float attackCooldown = 5f;
+    private int randomIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +27,18 @@ public class Medusa : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Stage2Flag") == 1)
         {
+            PlayerPrefs.SetInt("SnakeEnable", 1);
+            PlayerPrefs.SetFloat("snakeDropSpeed", 8);
             if (!healthSet)
             {
                 PlayerPrefs.SetString("barTitle", "Body Health");
                 PlayerPrefs.SetFloat("enemyHP", health);
+                health = 100;
                 healthSet = true;
             }
             MoveIn();
             PlayerPrefs.SetFloat("enemyHP", health);
+            RandomAttack();
         }
 
         stateInfo = MedusaBodyAnimator.GetCurrentAnimatorStateInfo(0);
@@ -96,5 +103,26 @@ public class Medusa : MonoBehaviour
     void HairAttack()
     {
         MedusaBodyAnimator.SetInteger("HairAttack", 1);
+    }
+
+    void RandomAttack()
+    {
+        if (attackCooldown > 0)
+        {
+            attackCooldown -= Time.deltaTime;
+        }
+        if (attackCooldown <= 0)
+        {
+            randomIndex = Random.Range(0, 2);
+            if (randomIndex == 0)
+            {
+                Gaze();
+            }
+            if (randomIndex == 1)
+            {
+                HairAttack();
+            }
+            attackCooldown = attackInterval;
+        }
     }
 }
