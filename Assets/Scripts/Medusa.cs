@@ -13,7 +13,7 @@ public class Medusa : MonoBehaviour
     private AnimatorStateInfo stateInfo;
     private bool ableToAttack;
     private bool healthSet = false;
-    private float attackInterval = 4f;
+    private float attackInterval = 5f;
     private float attackCooldown = 5f;
     private int randomIndex;
 
@@ -30,7 +30,7 @@ public class Medusa : MonoBehaviour
         if (PlayerPrefs.GetInt("Stage2Flag") == 1)
         {
             PlayerPrefs.SetInt("SnakeEnable", 1);
-            PlayerPrefs.SetFloat("snakeDropSpeed", 8);
+            PlayerPrefs.SetFloat("snakeDropSpeed", 7);
             if (!healthSet)
             {
                 PlayerPrefs.SetString("barTitle", "Body Health");
