@@ -13,7 +13,7 @@ public class Medusa : MonoBehaviour
     private AnimatorStateInfo stateInfo;
     private bool ableToAttack;
     private bool healthSet = false;
-    private float attackInterval = 5f;
+    private float attackInterval = 4f;
     private float attackCooldown = 5f;
     private int randomIndex;
 
